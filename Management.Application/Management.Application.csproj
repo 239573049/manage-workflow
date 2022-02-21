@@ -14,4 +14,9 @@
     <ProjectReference Include="..\Management.Repository\Management.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Dto\" />
+  </ItemGroup>
+
 </Project>
