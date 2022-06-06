@@ -7,7 +7,7 @@ using Volo.Abp.Domain.Entities;
 namespace Token.Management.Domain.WorkFlow;
 
 /// <summary>
-///     工作流实例
+/// 工作流实例
 /// </summary>
 public class WorkflowInstance : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 {

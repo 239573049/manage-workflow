@@ -4,8 +4,21 @@ using Volo.Abp.Domain.Entities;
 
 namespace Token.Management.Domain.Management;
 
+/// <summary>
+/// 角色表
+/// </summary>
 public class Role : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 {
+    /// <inheritdoc />
+    public Role()
+    {
+    }
+
+    /// <inheritdoc />
+    public Role(Guid id) : base(id)
+    {
+    }
+
     /// <summary>
     ///     名称
     /// </summary>
@@ -33,5 +46,6 @@ public class Role : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 
     public bool IsDeleted { get; set; }
 
-    public DateTime CreationTime { get; }
+    public DateTime CreationTime { get; set; }
+
 }

@@ -9,6 +9,16 @@ namespace Token.Management.Domain.Management;
 /// </summary>
 public class Company : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 {
+    /// <inheritdoc />
+    public Company()
+    {
+    }
+
+    /// <inheritdoc />
+    public Company(Guid id) : base(id)
+    {
+    }
+
     /// <summary>
     ///     公司名称
     /// </summary>
@@ -33,5 +43,5 @@ public class Company : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 
     public bool IsDeleted { get; set; }
 
-    public DateTime CreationTime { get; }
+    public DateTime CreationTime { get; set; }
 }

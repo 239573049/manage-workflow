@@ -10,6 +10,16 @@ namespace Token.Management.Domain.Management.AccessFunction;
 /// </summary>
 public class UserRoleFunction : AggregateRoot<Guid>, ISoftDelete, IHasCreationTime
 {
+    /// <inheritdoc />
+    public UserRoleFunction(Guid id) : base(id)
+    {
+    }
+
+    /// <inheritdoc />
+    public UserRoleFunction()
+    {
+    }
+
     public Guid UserInfoId { get; set; }
 
     public Guid RoleId { get; set; }
@@ -18,7 +28,7 @@ public class UserRoleFunction : AggregateRoot<Guid>, ISoftDelete, IHasCreationTi
 
     public UserInfo? UserInfo { get; set; }
 
-    public DateTime CreationTime { get; }
+    public DateTime CreationTime { get; set; }
 
     public bool IsDeleted { get; set; }
 }

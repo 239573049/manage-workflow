@@ -4,8 +4,21 @@ using Volo.Abp.Domain.Entities;
 
 namespace Token.Management.Domain.Management;
 
+/// <summary>
+/// 菜单
+/// </summary>
 public class Menu : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 {
+    /// <inheritdoc />
+    public Menu()
+    {
+    }
+
+    /// <inheritdoc />
+    public Menu(Guid id) : base(id)
+    {
+    }
+
     public int Index { get; set; }
 
     /// <summary>
@@ -39,5 +52,5 @@ public class Menu : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 
     public bool IsDeleted { get; set; }
 
-    public DateTime CreationTime { get; }
+    public DateTime CreationTime { get; set; }
 }

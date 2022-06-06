@@ -5,8 +5,21 @@ using Volo.Abp.Domain.Entities;
 
 namespace Token.Management.Domain.Management;
 
+/// <summary>
+/// 部门
+/// </summary>
 public class Department : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 {
+    /// <inheritdoc />
+    public Department()
+    {
+    }
+
+    /// <inheritdoc />
+    public Department(Guid id) : base(id)
+    {
+    }
+
     /// <summary>
     ///     部门名称
     /// </summary>
@@ -38,5 +51,5 @@ public class Department : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 
     public bool IsDeleted { get; set; }
 
-    public DateTime CreationTime { get; }
+    public DateTime CreationTime { get; set; }
 }

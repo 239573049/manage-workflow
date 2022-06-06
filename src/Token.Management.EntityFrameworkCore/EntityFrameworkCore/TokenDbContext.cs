@@ -9,6 +9,9 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace Token.Management.EntityFrameworkCore.EntityFrameworkCore;
 
+/// <summary>
+/// dbContext
+/// </summary>
 public class TokenDbContext : AbpDbContext<TokenDbContext>
 {
     public DbSet<Role> Role { get; set; }
@@ -43,6 +46,7 @@ public class TokenDbContext : AbpDbContext<TokenDbContext>
 
     public DbSet<SystemMessage> SystemMessage { get; set; }
 
+    /// <inheritdoc />
     public TokenDbContext(DbContextOptions<TokenDbContext> options) : base(options)
     {
     }
@@ -56,6 +60,14 @@ public class TokenDbContext : AbpDbContext<TokenDbContext>
         // 显示更详细的异常日志
         optionsBuilder.EnableDetailedErrors();
 #endif
+    }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Initia();
+        
+        builder.Config();
+
 
     }
 }

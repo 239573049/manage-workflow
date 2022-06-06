@@ -8,8 +8,21 @@ using Volo.Abp.Domain.Entities;
 
 namespace Token.Management.Domain.Users;
 
+/// <summary>
+/// 用户表
+/// </summary>
 public class UserInfo : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 {
+    /// <inheritdoc />
+    public UserInfo()
+    {
+    }
+
+    /// <inheritdoc />
+    public UserInfo(Guid id) : base(id)
+    {
+    }
+
     /// <summary>
     ///     账号
     /// </summary>
@@ -68,5 +81,5 @@ public class UserInfo : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
 
     public bool IsDeleted { get; set; }
 
-    public DateTime CreationTime { get; }
+    public DateTime CreationTime { get; set; }
 }
