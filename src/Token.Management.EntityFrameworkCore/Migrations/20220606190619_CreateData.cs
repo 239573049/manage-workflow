@@ -14,7 +14,20 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Company",
+                name: "ExtraPropertyDictionary",
+                columns: table => new
+                {
+                    Count = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExtraPropertyDictionary", x => x.Count);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "token_company",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
@@ -31,20 +44,7 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Company", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "ExtraPropertyDictionary",
-                columns: table => new
-                {
-                    Count = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ExtraPropertyDictionary", x => x.Count);
+                    table.PrimaryKey("PK_token_company", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -205,9 +205,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 {
                     table.PrimaryKey("PK_token_department", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_token_department_Company_CompanyId",
+                        name: "FK_token_department_token_company_CompanyId",
                         column: x => x.CompanyId,
-                        principalTable: "Company",
+                        principalTable: "token_company",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -463,62 +463,67 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.InsertData(
-                table: "Company",
+                table: "token_company",
                 columns: new[] { "Id", "Code", "CreationTime", "Describe", "IsDeleted", "Logo", "Name" },
-                values: new object[] { new Guid("735bceba-1761-4aba-9b78-7af4085236ec"), "wr", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), "微软（Microsoft）是一家 美国 跨国科技企业，由 比尔·盖茨 和 保罗·艾伦 于1975年4月4日创立。 公司总部设立在 华盛顿州 雷德蒙德 （Redmond，邻近 西雅图 ），以 研发 、 制造 、 授权 和提供广泛的 电脑软件 服务业务为主 。", false, null, "Microsoft" });
+                values: new object[] { new Guid("aab77e0b-acca-427f-9b99-4192fcf857a6"), "wr", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), "微软（Microsoft）是一家 美国 跨国科技企业，由 比尔·盖茨 和 保罗·艾伦 于1975年4月4日创立。 公司总部设立在 华盛顿州 雷德蒙德 （Redmond，邻近 西雅图 ），以 研发 、 制造 、 授权 和提供广泛的 电脑软件 服务业务为主 。", false, null, "Microsoft" });
 
             migrationBuilder.InsertData(
                 table: "token_menu",
                 columns: new[] { "Id", "Component", "CreationTime", "Icon", "Index", "IsDeleted", "Name", "ParentId", "Path", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("3a845e2d-63df-4a84-b569-410db7194843"), "RoleConfig", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 0, false, "角色配置", new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "/system/roleConfig/index", "角色配置" },
-                    { new Guid("3d7547f1-43eb-4b3b-983b-3584b8498689"), "Home", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 0, false, "首页", null, "/home/index", "首页" },
-                    { new Guid("4c1b7f80-981e-464a-a376-f1bb4965d447"), "Work", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 3, false, "工作", null, "/Work/index", "工作" },
-                    { new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "System", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 2, false, "系统配置", null, "/system/index", "系统配置" },
-                    { new Guid("7c4de579-cf8f-434d-8951-46935d05e234"), "UserConfig", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 1, false, "用户权限配置", new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "/system/userConfig/index", "用户权限配置" },
-                    { new Guid("d73878e3-8f90-4ab8-8c57-548db98e3cd6"), "User", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 1, false, "用户管理", null, "/user/index", "用户管理" },
-                    { new Guid("f5b38af3-4cf2-4ad3-a249-56ac0f0ec94c"), "WorkConfig", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 2, false, "工作流配置", new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "/system/workConfig/index", "工作流配置" }
+                    { new Guid("0436ce5c-847d-4f52-b899-23de0c0ffcad"), "WorkConfig", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), null, 2, false, "工作流配置", new Guid("49b54056-ca0d-409f-a1d0-b28ca19ff6bc"), "/system/workConfig/index", "工作流配置" },
+                    { new Guid("0e5f04f8-1ae2-4e19-bf8f-ddfeceb2cdd4"), "User", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), null, 1, false, "用户管理", null, "/user/index", "用户管理" },
+                    { new Guid("49b54056-ca0d-409f-a1d0-b28ca19ff6bc"), "System", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), null, 2, false, "系统配置", null, "/system/index", "系统配置" },
+                    { new Guid("5497a9e8-43ab-4de4-8695-999f0add8296"), "UserConfig", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), null, 1, false, "用户权限配置", new Guid("49b54056-ca0d-409f-a1d0-b28ca19ff6bc"), "/system/userConfig/index", "用户权限配置" },
+                    { new Guid("7cf394b0-a182-453d-b4eb-f9f899a6fa0d"), "Work", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), null, 3, false, "工作", null, "/Work/index", "工作" },
+                    { new Guid("7e8dbc94-c9f0-42d6-af32-25543090d534"), "Home", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), null, 0, false, "首页", null, "/home/index", "首页" },
+                    { new Guid("9b9a403a-fe51-43e1-966f-67c4e982beeb"), "RoleConfig", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), null, 0, false, "角色配置", new Guid("49b54056-ca0d-409f-a1d0-b28ca19ff6bc"), "/system/roleConfig/index", "角色配置" }
                 });
 
             migrationBuilder.InsertData(
                 table: "token_role",
                 columns: new[] { "Id", "Code", "CreationTime", "Index", "IsDeleted", "Name", "ParentId", "Remark" },
-                values: new object[] { new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), "admin", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), 0, false, "管理员", null, "系统管理员" });
+                values: new object[] { new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), "admin", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), 0, false, "管理员", null, "系统管理员" });
 
             migrationBuilder.InsertData(
                 table: "token_user_info",
                 columns: new[] { "Id", "AccountNumber", "CreationTime", "EMail", "HeadPortraits", "IsDeleted", "MobileNumber", "Name", "Password", "Sex", "Statue", "WXOpenId" },
-                values: new object[] { new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb"), "admin", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), "239573049@qq.com", "https://upfile2.asqql.com/upfile/hdimg/wmtp/wmtp/2018-07/08/18_7_8_16_10_08yoqapqci.jpg", false, 13049809673L, "管理员", "Aa010426", 1, 0, null });
+                values: new object[] { new Guid("db9555b3-c844-492a-9192-8649361cb75e"), "admin", new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), "239573049@qq.com", "https://upfile2.asqql.com/upfile/hdimg/wmtp/wmtp/2018-07/08/18_7_8_16_10_08yoqapqci.jpg", false, 13049809673L, "管理员", "Aa010426", 1, 0, null });
 
             migrationBuilder.InsertData(
                 table: "token_department",
                 columns: new[] { "Id", "Code", "CompanyId", "CreationTime", "Index", "IsDeleted", "Name", "ParentId", "UserInfoId" },
-                values: new object[] { new Guid("e4fa71e6-0bb1-45d7-a744-088d57eb14da"), "cs", new Guid("735bceba-1761-4aba-9b78-7af4085236ec"), new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), 0, false, "测试部门", null, null });
+                values: new object[] { new Guid("bcf1021f-ed6e-4ac6-834b-84937dd741af"), "cs", new Guid("aab77e0b-acca-427f-9b99-4192fcf857a6"), new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), 0, false, "测试部门", null, null });
 
             migrationBuilder.InsertData(
                 table: "token_menu_role_function",
                 columns: new[] { "Id", "CreationTime", "IsDeleted", "MenuId", "RoleId", "UserInfoId" },
                 values: new object[,]
                 {
-                    { new Guid("119a73ca-28a8-48f5-a284-d626613db93c"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("4c1b7f80-981e-464a-a376-f1bb4965d447"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
-                    { new Guid("23b75d25-24da-493b-a83f-cca4ca3c0e4c"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("3a845e2d-63df-4a84-b569-410db7194843"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
-                    { new Guid("6508827b-1373-4631-af2f-1072ec77c531"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("f5b38af3-4cf2-4ad3-a249-56ac0f0ec94c"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
-                    { new Guid("7914a004-b082-423f-8ed4-1341c0e440cf"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("3d7547f1-43eb-4b3b-983b-3584b8498689"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
-                    { new Guid("952cf9b7-98ed-4e4a-9388-7bad259afbb8"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
-                    { new Guid("9f276a48-8753-425e-8e0c-63297b517e83"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("7c4de579-cf8f-434d-8951-46935d05e234"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
-                    { new Guid("cc363f8d-b471-469a-a9d1-bcfc8a81ae9b"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("d73878e3-8f90-4ab8-8c57-548db98e3cd6"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null }
+                    { new Guid("62c4c9cd-639c-4ca3-962d-cd6e4eb34c65"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("5497a9e8-43ab-4de4-8695-999f0add8296"), new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), null },
+                    { new Guid("64a99844-8a45-4f1e-b136-dae5df44f695"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("7cf394b0-a182-453d-b4eb-f9f899a6fa0d"), new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), null },
+                    { new Guid("8250ced8-e34f-4969-9308-6a7a1731239e"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("0436ce5c-847d-4f52-b899-23de0c0ffcad"), new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), null },
+                    { new Guid("917247aa-af9a-46d6-b103-074d9a45d62f"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("9b9a403a-fe51-43e1-966f-67c4e982beeb"), new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), null },
+                    { new Guid("b0fed1b3-9734-4ec4-a3c2-4858c8413105"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("49b54056-ca0d-409f-a1d0-b28ca19ff6bc"), new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), null },
+                    { new Guid("c0c8f085-42de-4036-b60e-a06cc7534962"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("7e8dbc94-c9f0-42d6-af32-25543090d534"), new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), null },
+                    { new Guid("c78a96a9-05b1-4b27-ab49-2a5532f39fde"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("0e5f04f8-1ae2-4e19-bf8f-ddfeceb2cdd4"), new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), null }
                 });
 
             migrationBuilder.InsertData(
                 table: "token_user_role_function",
                 columns: new[] { "Id", "CreationTime", "IsDeleted", "RoleId", "UserInfoId" },
-                values: new object[] { new Guid("72e4ca93-3b60-4228-ba7b-c43fa049227a"), new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), false, new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb") });
+                values: new object[] { new Guid("59845bb1-34fb-4ba9-917b-dccb8e8b59f7"), new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), false, new Guid("f14bb479-6e36-47e9-af6e-0e8081c0be59"), new Guid("db9555b3-c844-492a-9192-8649361cb75e") });
 
             migrationBuilder.InsertData(
                 table: "token_user_department_function",
                 columns: new[] { "Id", "CreationTime", "DepartmentId", "IsDeleted", "UserInfoId" },
-                values: new object[] { new Guid("75b64236-37c6-47c8-89c9-a5ec69bd2bf9"), new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), new Guid("e4fa71e6-0bb1-45d7-a744-088d57eb14da"), false, new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb") });
+                values: new object[] { new Guid("7da2a1c5-edc1-4bbe-9721-ce9f7284659e"), new DateTime(2022, 6, 7, 3, 6, 19, 15, DateTimeKind.Local).AddTicks(1666), new Guid("bcf1021f-ed6e-4ac6-834b-84937dd741af"), false, new Guid("db9555b3-c844-492a-9192-8649361cb75e") });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_token_company_Id",
+                table: "token_company",
+                column: "Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_department_CompanyId",
@@ -721,7 +726,7 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 name: "token_workflow_instance");
 
             migrationBuilder.DropTable(
-                name: "Company");
+                name: "token_company");
 
             migrationBuilder.DropTable(
                 name: "token_user_info");

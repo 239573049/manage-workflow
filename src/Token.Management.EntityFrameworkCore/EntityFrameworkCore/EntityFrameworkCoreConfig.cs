@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Token.Infrastructure.Extension;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.SystemService;
@@ -13,6 +14,7 @@ public static class EntityFrameworkCoreConfig
 {
     public static ModelBuilder Config(this ModelBuilder builder)
     {
+        var des = new DESExtension();
         builder.Entity<ExtraPropertyDictionary>().HasKey(x=>x.Count);
 
         builder.Entity<UserInfo>(x =>
@@ -28,6 +30,8 @@ public static class EntityFrameworkCoreConfig
             x.Property(x => x.EMail).HasComment("邮箱");
             x.Property(x => x.HeadPortraits).HasComment("头像");
 
+            x.Property(x => x.Password)
+                .HasConversion(x => des.DESDecrypt(x), x => des.DESEncrypt(x));
         });
 
         builder.Entity<Role>(x =>
@@ -147,6 +151,13 @@ public static class EntityFrameworkCoreConfig
             x.HasIndex(x => x.Id);
             x.HasKey(x => x.Id);
 
+        });
+
+        builder.Entity<Company>(x =>
+        {
+            x.ToTable("token_company");
+            x.HasIndex(x => x.Id);
+            x.HasKey(x => x.Id);
         });
 
         return builder;

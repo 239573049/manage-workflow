@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Token.Infrastructure.Extension;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.Shared;
@@ -15,7 +16,7 @@ public static class EntityFrameworkCoreInitialData
     /// <param name="model"></param>
     public static void Initia(this ModelBuilder model)
     {
-
+        var des = new DESExtension();
         var now = DateTime.Now;
         var userInfoData = new List<UserInfo>()
         {
@@ -27,7 +28,7 @@ public static class EntityFrameworkCoreInitialData
                 HeadPortraits="https://upfile2.asqql.com/upfile/hdimg/wmtp/wmtp/2018-07/08/18_7_8_16_10_08yoqapqci.jpg",
                 MobileNumber=13049809673,
                 Name="管理员",
-                Password="Aa010426",
+                Password=des.DESEncrypt("Aa010426"),
                 CreationTime=now,
                 Statue =StatueEnum.Enable
             },

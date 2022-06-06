@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Token.Infrastructure\Token.Infrastructure.csproj" />
     <ProjectReference Include="..\Token.Mangement.Domain\Token.Mangement.Domain.csproj" />
   </ItemGroup>
 
