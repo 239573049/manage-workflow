@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Management.Application.Services.Management;
 using Token.HttpApi;
+using Token.Infrastructure.Extension;
 using Token.Management.Application.Contracts.AppServices.Users;
 using Token.Management.Application.Contracts.Module.Management;
 using Token.Management.Application.Contracts.Module.Users;
@@ -15,18 +16,22 @@ namespace Token.Management.Application.Services.Users;
 public class UserInfoService : ApplicationService, IUserInfoService
 {
     private readonly IMapper _mapper;
+    private readonly DESHelper _desHelper;
     private readonly IPrincipalAccessor _principalAccessor;
     private readonly IDepartmentService _departmentService;
     private readonly IUserInfoRepository _userInfoRepository;
     public UserInfoService(
         IMapper mapper,
         IDepartmentService departmentService,
-        IPrincipalAccessor principalAccessor, IUserInfoRepository userInfoRepository)
+        IPrincipalAccessor principalAccessor,
+        IUserInfoRepository userInfoRepository,
+        DESHelper desHelper)
     {
         _mapper = mapper;
         _departmentService = departmentService;
         _principalAccessor = principalAccessor;
         _userInfoRepository = userInfoRepository;
+        _desHelper = desHelper;
     }
 
     public async Task<UserInfoDto> CreateUserInfo(UserInfoDto userInfo)

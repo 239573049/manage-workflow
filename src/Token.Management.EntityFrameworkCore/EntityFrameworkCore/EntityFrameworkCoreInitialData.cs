@@ -16,7 +16,7 @@ public static class EntityFrameworkCoreInitialData
     /// <param name="model"></param>
     public static void Initia(this ModelBuilder model)
     {
-        var des = new DESExtension();
+        var des = new DESHelper();
         var now = DateTime.Now;
         var userInfoData = new List<UserInfo>()
         {

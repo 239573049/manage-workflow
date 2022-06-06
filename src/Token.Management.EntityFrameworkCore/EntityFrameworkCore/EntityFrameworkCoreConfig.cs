@@ -14,7 +14,7 @@ public static class EntityFrameworkCoreConfig
 {
     public static ModelBuilder Config(this ModelBuilder builder)
     {
-        var des = new DESExtension();
+        var des = new DESHelper();
         builder.Entity<ExtraPropertyDictionary>().HasKey(x=>x.Count);
 
         builder.Entity<UserInfo>(x =>

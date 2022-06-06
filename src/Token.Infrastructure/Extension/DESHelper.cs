@@ -4,7 +4,7 @@ using Volo.Abp.DependencyInjection;
 
 namespace Token.Infrastructure.Extension;
 
-public class DESExtension:ISingletonDependency
+public class DESHelper:ISingletonDependency
 {
     private const string Key = "TOKENKEY";
 

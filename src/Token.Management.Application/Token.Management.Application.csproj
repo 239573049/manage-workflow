@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Token.HttpApi\Token.HttpApi.csproj" />
     <ProjectReference Include="..\Token.Infrastructure\Token.Infrastructure.csproj" />
     <ProjectReference Include="..\Token.Management.Application.Contracts\Token.Management.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Token.Management.EntityFrameworkCore\Token.Management.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>
