@@ -1,4 +1,4 @@
-﻿using Management.Application.Services.Management;
+using Management.Application.Services.Management;
 using Microsoft.AspNetCore.Mvc;
 using Token.HttpApi;
 using Token.Infrastructure;
@@ -16,6 +16,7 @@ public class RoleController : BaseController
 {
     private readonly IRoleService _roleService;
 
+    /// <inheritdoc/>
     public RoleController(
         IRoleService roleService
     )
@@ -78,7 +79,7 @@ public class RoleController : BaseController
     [HttpGet]
     public async Task<PagingModelView<List<UserInfoDto>>> GetRoleUserInfo(Guid id, int pageNo = 1, int pageSize = 20)
     {
-        (List<UserInfoDto>, int) data = await _roleService.GetRoleUserInfo(id,new PageInput()
+        (List<UserInfoDto>, int) data = await _roleService.GetRoleUserInfo(id, new PageInput()
         {
             PageNo = pageNo,
             PageSize = pageSize
@@ -103,14 +104,14 @@ public class RoleController : BaseController
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
-    /// <param name="pageNo"></param
+    /// <param name="pageNo"></param>
     /// <param name="pageSize"></param>
     /// <returns></returns>
     [HttpGet]
     public async Task<PagingModelView<List<UserInfoDto>>> GetRoleUserInfoNotExit(Guid id, string? name, int pageNo = 1,
         int pageSize = 20)
     {
-        (List<UserInfoDto>, int) data = await _roleService.GetRoleUserInfoNotExit(id,new PageInput()
+        (List<UserInfoDto>, int) data = await _roleService.GetRoleUserInfoNotExit(id, new PageInput()
         {
             Keyword = name,
             PageNo = pageNo,

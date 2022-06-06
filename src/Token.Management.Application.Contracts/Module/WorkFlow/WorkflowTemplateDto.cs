@@ -1,9 +1,15 @@
-﻿using Token.Management.Domain.Base;
+using Token.Management.Domain.Base;
 
 namespace Token.Management.Application.Contracts.Module.WorkFlow;
 
+/// <summary>
+/// 模板Dto
+/// </summary>
 public class WorkflowTemplateDto : SerialNumberEntity
 {
+    /// <summary>
+    /// Id
+    /// </summary>
     public Guid Id { get; set; }
 
     /// <summary>
@@ -21,6 +27,13 @@ public class WorkflowTemplateDto : SerialNumberEntity
     /// </summary>
     public string? Remark { get; set; }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public List<WorkflowInstanceDto> WorkflowInstance { get; set; } = new();
+
+    /// <summary>
+    /// 节点模板
+    /// </summary>
     public List<WorkflowNodeTemplateDto> WorkflowNodeTemplate { get; set; } = new();
 }

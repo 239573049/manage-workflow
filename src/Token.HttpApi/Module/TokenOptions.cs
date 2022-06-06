@@ -1,4 +1,4 @@
-﻿namespace Token.HttpApi.Module;
+namespace Token.HttpApi.Module;
 
 /// <summary>
 ///     token Options Module
@@ -8,15 +8,15 @@ public class TokenOptions
     /// <summary>
     ///     key
     /// </summary>
-    public string SecretKey { get; set; }
+    public string? SecretKey { get; set; }
 
     /// <summary>
     /// </summary>
-    public string Issuer { get; set; }
+    public string? Issuer { get; set; }
 
     /// <summary>
     /// </summary>
-    public string Audience { get; set; }
+    public string? Audience { get; set; }
 
     /// <summary>
     ///     过期时间

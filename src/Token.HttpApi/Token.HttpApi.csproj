@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Token.Mangement.Domain\Token.Mangement.Domain.csproj" />
+    <ProjectReference Include="..\Token.Mangement.Domain\Token.Mangement.Domain.csproj" />
     <ProjectReference Include="..\Token.Management.Domain.Shared\Token.Management.Domain.Shared.csproj" />
   </ItemGroup>
 

@@ -4,6 +4,9 @@ using Volo.Abp.Domain.Entities;
 
 namespace Token.Management.Domain.Base;
 
+/// <summary>
+///
+/// </summary>
 public class WorkFlowStatue : AggregateRoot<Guid>, ISoftDelete
 {
     /// <summary>

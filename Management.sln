@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.ManagementApi.Host", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.Mangement.Domain", "src\Token.Mangement.Domain\Token.Mangement.Domain.csproj", "{B4E47E83-23C0-4D5F-8CCC-066A3494EA14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.Management.Domain.Shared", "Token.Management.Domain.Shared\Token.Management.Domain.Shared.csproj", "{4BB1EB9C-1DD1-4052-BB4B-09A10854036D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.Management.Domain.Shared", "src\Token.Management.Domain.Shared\Token.Management.Domain.Shared.csproj", "{4BB1EB9C-1DD1-4052-BB4B-09A10854036D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.Management.EntityFrameworkCore", "src\Token.Management.EntityFrameworkCore\Token.Management.EntityFrameworkCore.csproj", "{2B9634EC-891D-4D70-B478-73BBCFF4639C}"
 EndProject
@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.Management.Applicatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.Management.Application.Contracts", "src\Token.Management.Application.Contracts\Token.Management.Application.Contracts.csproj", "{212665E7-02F0-44F3-8FA7-0B057A357795}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.HttpApi", "Token.HttpApi\Token.HttpApi.csproj", "{7FD66C94-6727-425C-A537-64D476E96649}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Token.HttpApi", "src\Token.HttpApi\Token.HttpApi.csproj", "{7FD66C94-6727-425C-A537-64D476E96649}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3E9DEFD6-93C6-4242-BDF3-B69D5DF0C75F}"
 EndProject
