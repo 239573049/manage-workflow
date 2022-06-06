@@ -1,11 +1,11 @@
-﻿using Token.Management.Domain.Management;
+using Token.Management.Domain.Management;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
 namespace Token.Management.Domain.WorkFlow;
 
-public class WorkflowApprovalRole : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class WorkflowApprovalRole : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <summarAggregateRoot
     /// <Guid>

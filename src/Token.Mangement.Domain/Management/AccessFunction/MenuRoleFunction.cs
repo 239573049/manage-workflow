@@ -1,4 +1,4 @@
-﻿using Volo.Abp;
+using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
@@ -7,7 +7,7 @@ namespace Token.Management.Domain.Management.AccessFunction;
 /// <summary>
 /// 角色菜单配置
 /// </summary>
-public class MenuRoleFunction : AggregateRoot<Guid>,ISoftDelete,IHasCreationTime
+public class MenuRoleFunction : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public MenuRoleFunction()
@@ -15,7 +15,7 @@ public class MenuRoleFunction : AggregateRoot<Guid>,ISoftDelete,IHasCreationTime
     }
 
     ///<inheritdoc />
-    public MenuRoleFunction(Guid id):base(id)
+    public MenuRoleFunction(Guid id) : base(id)
     {
     }
 

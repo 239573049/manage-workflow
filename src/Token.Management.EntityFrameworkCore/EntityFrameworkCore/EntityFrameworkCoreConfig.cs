@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.SystemService;
@@ -11,12 +11,9 @@ namespace Token.Management.EntityFrameworkCore.EntityFrameworkCore;
 
 public static class EntityFrameworkCoreConfig
 {
-    public static ModelBuilder Config(this ModelBuilder  builder)
+    public static ModelBuilder Config(this ModelBuilder builder)
     {
-        builder.Entity<ExtraPropertyDictionary>(x =>
-        {
-            x.HasKey(x => x.Count);
-        });
+        builder.Entity<ExtraPropertyDictionary>().HasKey(x=>x.Count);
 
         builder.Entity<UserInfo>(x =>
         {

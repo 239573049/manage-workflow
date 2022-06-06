@@ -1,4 +1,4 @@
-﻿using Volo.Abp;
+using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
@@ -7,7 +7,7 @@ namespace Token.Management.Domain.Management;
 /// <summary>
 /// 角色表
 /// </summary>
-public class Role : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class Role : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public Role()

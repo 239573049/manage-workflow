@@ -11,8 +11,8 @@ using Token.Management.EntityFrameworkCore.EntityFrameworkCore;
 namespace Token.Management.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(TokenDbContext))]
-    [Migration("20220606181747_CreateConfig")]
-    partial class CreateConfig
+    [Migration("20220606183717_CreateData")]
+    partial class CreateData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,14 +27,8 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -50,8 +44,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.HasIndex("MenuId");
@@ -61,6 +53,64 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasIndex("UserInfoId");
 
                     b.ToTable("token_menu_role_function", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7914a004-b082-423f-8ed4-1341c0e440cf"),
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MenuId = new Guid("3d7547f1-43eb-4b3b-983b-3584b8498689"),
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09")
+                        },
+                        new
+                        {
+                            Id = new Guid("cc363f8d-b471-469a-a9d1-bcfc8a81ae9b"),
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MenuId = new Guid("d73878e3-8f90-4ab8-8c57-548db98e3cd6"),
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09")
+                        },
+                        new
+                        {
+                            Id = new Guid("952cf9b7-98ed-4e4a-9388-7bad259afbb8"),
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MenuId = new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"),
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09")
+                        },
+                        new
+                        {
+                            Id = new Guid("119a73ca-28a8-48f5-a284-d626613db93c"),
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MenuId = new Guid("4c1b7f80-981e-464a-a376-f1bb4965d447"),
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09")
+                        },
+                        new
+                        {
+                            Id = new Guid("9f276a48-8753-425e-8e0c-63297b517e83"),
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MenuId = new Guid("7c4de579-cf8f-434d-8951-46935d05e234"),
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09")
+                        },
+                        new
+                        {
+                            Id = new Guid("23b75d25-24da-493b-a83f-cca4ca3c0e4c"),
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MenuId = new Guid("3a845e2d-63df-4a84-b569-410db7194843"),
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09")
+                        },
+                        new
+                        {
+                            Id = new Guid("6508827b-1373-4631-af2f-1072ec77c531"),
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MenuId = new Guid("f5b38af3-4cf2-4ad3-a249-56ac0f0ec94c"),
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09")
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.AccessFunction.UserDepartmentFunction", b =>
@@ -69,17 +119,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("char(36)");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -91,13 +135,21 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.HasIndex("UserInfoId");
 
                     b.ToTable("token_user_department_function", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("75b64236-37c6-47c8-89c9-a5ec69bd2bf9"),
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            DepartmentId = new Guid("e4fa71e6-0bb1-45d7-a744-088d57eb14da"),
+                            IsDeleted = false,
+                            UserInfoId = new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb")
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.AccessFunction.UserRoleFunction", b =>
@@ -106,14 +158,8 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -126,8 +172,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.HasIndex("RoleId");
@@ -135,6 +179,16 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasIndex("UserInfoId");
 
                     b.ToTable("token_user_role_function", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("72e4ca93-3b60-4228-ba7b-c43fa049227a"),
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            IsDeleted = false,
+                            RoleId = new Guid("c1721287-6894-401b-aa0d-c73b28244e09"),
+                            UserInfoId = new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb")
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.Company", b =>
@@ -146,17 +200,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Describe")
                         .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -169,9 +217,18 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.ToTable("Company");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("735bceba-1761-4aba-9b78-7af4085236ec"),
+                            Code = "wr",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Describe = "微软（Microsoft）是一家 美国 跨国科技企业，由 比尔·盖茨 和 保罗·艾伦 于1975年4月4日创立。 公司总部设立在 华盛顿州 雷德蒙德 （Redmond，邻近 西雅图 ），以 研发 、 制造 、 授权 和提供广泛的 电脑软件 服务业务为主 。",
+                            IsDeleted = false,
+                            Name = "Microsoft"
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.Department", b =>
@@ -186,14 +243,8 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Property<Guid>("CompanyId")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<int>("Index")
                         .HasColumnType("int");
@@ -214,13 +265,23 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.HasIndex("UserInfoId");
 
                     b.ToTable("token_department", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e4fa71e6-0bb1-45d7-a744-088d57eb14da"),
+                            Code = "cs",
+                            CompanyId = new Guid("735bceba-1761-4aba-9b78-7af4085236ec"),
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 0,
+                            IsDeleted = false,
+                            Name = "测试部门"
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.Menu", b =>
@@ -232,14 +293,8 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Property<string>("Component")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<string>("Icon")
                         .HasColumnType("longtext");
@@ -264,11 +319,91 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.ToTable("token_menu", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3d7547f1-43eb-4b3b-983b-3584b8498689"),
+                            Component = "Home",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 0,
+                            IsDeleted = false,
+                            Name = "首页",
+                            Path = "/home/index",
+                            Title = "首页"
+                        },
+                        new
+                        {
+                            Id = new Guid("d73878e3-8f90-4ab8-8c57-548db98e3cd6"),
+                            Component = "User",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 1,
+                            IsDeleted = false,
+                            Name = "用户管理",
+                            Path = "/user/index",
+                            Title = "用户管理"
+                        },
+                        new
+                        {
+                            Id = new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"),
+                            Component = "System",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 2,
+                            IsDeleted = false,
+                            Name = "系统配置",
+                            Path = "/system/index",
+                            Title = "系统配置"
+                        },
+                        new
+                        {
+                            Id = new Guid("4c1b7f80-981e-464a-a376-f1bb4965d447"),
+                            Component = "Work",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 3,
+                            IsDeleted = false,
+                            Name = "工作",
+                            Path = "/Work/index",
+                            Title = "工作"
+                        },
+                        new
+                        {
+                            Id = new Guid("7c4de579-cf8f-434d-8951-46935d05e234"),
+                            Component = "UserConfig",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 1,
+                            IsDeleted = false,
+                            Name = "用户权限配置",
+                            ParentId = new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"),
+                            Path = "/system/userConfig/index",
+                            Title = "用户权限配置"
+                        },
+                        new
+                        {
+                            Id = new Guid("3a845e2d-63df-4a84-b569-410db7194843"),
+                            Component = "RoleConfig",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 0,
+                            IsDeleted = false,
+                            Name = "角色配置",
+                            ParentId = new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"),
+                            Path = "/system/roleConfig/index",
+                            Title = "角色配置"
+                        },
+                        new
+                        {
+                            Id = new Guid("f5b38af3-4cf2-4ad3-a249-56ac0f0ec94c"),
+                            Component = "WorkConfig",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 2,
+                            IsDeleted = false,
+                            Name = "工作流配置",
+                            ParentId = new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"),
+                            Path = "/system/workConfig/index",
+                            Title = "工作流配置"
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.Role", b =>
@@ -281,14 +416,8 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasColumnType("longtext")
                         .HasComment("角色编号");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<int>("Index")
                         .HasColumnType("int")
@@ -311,11 +440,21 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.ToTable("token_role", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c1721287-6894-401b-aa0d-c73b28244e09"),
+                            Code = "admin",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            Index = 0,
+                            IsDeleted = false,
+                            Name = "管理员",
+                            Remark = "系统管理员"
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.SystemService.SystemMessage", b =>
@@ -323,12 +462,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsCheck")
                         .HasColumnType("tinyint(1)");
@@ -347,8 +480,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.ToTable("token_system_message", (string)null);
@@ -364,18 +495,12 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("EMail")
                         .HasColumnType("longtext")
                         .HasComment("邮箱");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<string>("HeadPortraits")
                         .HasColumnType("longtext")
@@ -410,11 +535,25 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.ToTable("token_user_info", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb"),
+                            AccountNumber = "admin",
+                            CreationTime = new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894),
+                            EMail = "239573049@qq.com",
+                            HeadPortraits = "https://upfile2.asqql.com/upfile/hdimg/wmtp/wmtp/2018-07/08/18_7_8_16_10_08yoqapqci.jpg",
+                            IsDeleted = false,
+                            MobileNumber = 13049809673L,
+                            Name = "管理员",
+                            Password = "Aa010426",
+                            Sex = 1,
+                            Statue = 0
+                        });
                 });
 
             modelBuilder.Entity("Token.Management.Domain.WorkContent.WorkDemoMain", b =>
@@ -423,16 +562,10 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Content")
                         .HasColumnType("longtext");
 
                     b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ExtraPropertiesCount")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -452,8 +585,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.ToTable("token_work_demo_main", (string)null);
@@ -465,12 +596,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
@@ -481,8 +606,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExtraPropertiesCount");
 
                     b.HasIndex("Id");
 
@@ -498,12 +621,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -521,8 +638,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExtraPropertiesCount");
 
                     b.HasIndex("Id");
 
@@ -544,14 +659,8 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasColumnType("longtext")
                         .HasComment("工作流实例code");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("CurrentRoleCode")
                         .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
 
                     b.Property<bool>("HasBeenRead")
                         .HasColumnType("tinyint(1)");
@@ -589,8 +698,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.HasIndex("SponsorId");
@@ -616,12 +723,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int>("Code")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -656,8 +757,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.HasIndex("WorkflowInstanceId");
@@ -672,12 +771,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<int>("Code")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -697,8 +790,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExtraPropertiesCount");
-
                     b.HasIndex("Id");
 
                     b.HasIndex("WorkflowTemplateId");
@@ -716,12 +807,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasColumnType("longtext")
                         .HasComment("工作流模板编号");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("ExtraPropertiesCount")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
@@ -734,8 +819,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .HasComment("工作流模板备注");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExtraPropertiesCount");
 
                     b.HasIndex("Id");
 
@@ -755,10 +838,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Token.Management.Domain.Management.AccessFunction.MenuRoleFunction", b =>
                 {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.Management.Menu", "Menu")
                         .WithMany()
                         .HasForeignKey("MenuId")
@@ -775,8 +854,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .WithMany("MenuRoleFunction")
                         .HasForeignKey("UserInfoId");
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("Menu");
 
                     b.Navigation("Role");
@@ -790,10 +867,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.Users.UserInfo", "UserInfo")
                         .WithMany("UserDepartmentFunction")
                         .HasForeignKey("UserInfoId")
@@ -802,17 +875,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
                     b.Navigation("Department");
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("UserInfo");
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.AccessFunction.UserRoleFunction", b =>
                 {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.Management.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -825,20 +892,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("Role");
 
                     b.Navigation("UserInfo");
-                });
-
-            modelBuilder.Entity("Token.Management.Domain.Management.Company", b =>
-                {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
-                    b.Navigation("ExtraProperties");
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.Department", b =>
@@ -849,70 +905,15 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.Users.UserInfo", null)
                         .WithMany("Department")
                         .HasForeignKey("UserInfoId");
 
                     b.Navigation("Company");
-
-                    b.Navigation("ExtraProperties");
-                });
-
-            modelBuilder.Entity("Token.Management.Domain.Management.Menu", b =>
-                {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
-                    b.Navigation("ExtraProperties");
-                });
-
-            modelBuilder.Entity("Token.Management.Domain.Management.Role", b =>
-                {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
-                    b.Navigation("ExtraProperties");
-                });
-
-            modelBuilder.Entity("Token.Management.Domain.SystemService.SystemMessage", b =>
-                {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
-                    b.Navigation("ExtraProperties");
-                });
-
-            modelBuilder.Entity("Token.Management.Domain.Users.UserInfo", b =>
-                {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
-                    b.Navigation("ExtraProperties");
-                });
-
-            modelBuilder.Entity("Token.Management.Domain.WorkContent.WorkDemoMain", b =>
-                {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
-                    b.Navigation("ExtraProperties");
                 });
 
             modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowApprovalRole", b =>
                 {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.Management.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -925,8 +926,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("Role");
 
                     b.Navigation("WorkflowNodeTemplate");
@@ -934,27 +933,17 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowApprovers", b =>
                 {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.WorkFlow.WorkflowInstance", "WorkflowInstance")
                         .WithMany("WorkflowApprovers")
                         .HasForeignKey("WorkflowInstanceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("WorkflowInstance");
                 });
 
             modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowInstance", b =>
                 {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.Users.UserInfo", "Sponsor")
                         .WithMany()
                         .HasForeignKey("SponsorId")
@@ -967,8 +956,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("Sponsor");
 
                     b.Navigation("WorkflowTemplate");
@@ -976,45 +963,24 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowNodeInstance", b =>
                 {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.WorkFlow.WorkflowInstance", "WorkflowInstance")
                         .WithMany("WorkflowNodeInstances")
                         .HasForeignKey("WorkflowInstanceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("WorkflowInstance");
                 });
 
             modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowNodeTemplate", b =>
                 {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
                     b.HasOne("Token.Management.Domain.WorkFlow.WorkflowTemplate", "WorkflowTemplate")
                         .WithMany("WorkflowNodeTemplate")
                         .HasForeignKey("WorkflowTemplateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExtraProperties");
-
                     b.Navigation("WorkflowTemplate");
-                });
-
-            modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowTemplate", b =>
-                {
-                    b.HasOne("Volo.Abp.Data.ExtraPropertyDictionary", "ExtraProperties")
-                        .WithMany()
-                        .HasForeignKey("ExtraPropertiesCount");
-
-                    b.Navigation("ExtraProperties");
                 });
 
             modelBuilder.Entity("Token.Management.Domain.Management.Company", b =>

@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Shared;
+using Token.Management.Domain.Shared;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
@@ -7,7 +7,7 @@ namespace Token.Management.Domain.Base;
 /// <summary>
 ///
 /// </summary>
-public class WorkFlowStatue : AggregateRoot<Guid>, ISoftDelete
+public class WorkFlowStatue : Entity<Guid>, ISoftDelete
 {
     /// <summary>
     ///     表单工作流状态

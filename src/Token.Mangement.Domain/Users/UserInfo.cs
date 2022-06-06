@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.Shared;
@@ -11,7 +11,7 @@ namespace Token.Management.Domain.Users;
 /// <summary>
 /// 用户表
 /// </summary>
-public class UserInfo : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class UserInfo : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public UserInfo()

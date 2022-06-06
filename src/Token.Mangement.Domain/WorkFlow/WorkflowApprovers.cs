@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Shared;
+using Token.Management.Domain.Shared;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
@@ -8,7 +8,7 @@ namespace Token.Management.Domain.WorkFlow;
 /// <summary>
 ///
 /// </summary>
-public class WorkflowApprovers : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class WorkflowApprovers : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <summary>
     ///     当前接单操作人

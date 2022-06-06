@@ -6,24 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Token.Management.EntityFrameworkCore.Migrations
 {
-    public partial class CreateConfig : Migration
+    public partial class CreateData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "ExtraPropertyDictionary",
-                columns: table => new
-                {
-                    Count = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ExtraPropertyDictionary", x => x.Count);
-                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -40,19 +27,24 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     Describe = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Company", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Company_ExtraPropertyDictionary_ExtraPropertiesCount",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ExtraPropertyDictionary",
+                columns: table => new
+                {
+                    Count = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExtraPropertyDictionary", x => x.Count);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -74,19 +66,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ParentId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_menu", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_menu_ExtraPropertyDictionary_ExtraPropertiesCount",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -104,19 +88,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     Index = table.Column<int>(type: "int", nullable: false, comment: "序号"),
                     ParentId = table.Column<Guid>(type: "char(36)", nullable: true, comment: "父节点", collation: "ascii_general_ci"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_role", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_role_ExtraPropertyDictionary_ExtraPropertiesCount",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -131,19 +107,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsCheck = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     WorkFormCode = table.Column<int>(type: "int", nullable: false),
-                    WorkFormId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    WorkFormId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_system_message", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_system_message_ExtraPropertyDictionary_ExtraProperties~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -168,19 +136,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     EMail = table.Column<string>(type: "longtext", nullable: true, comment: "邮箱")
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_user_info", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_user_info_ExtraPropertyDictionary_ExtraPropertiesCount",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -196,9 +156,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     Content = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Count = table.Column<int>(type: "int", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     WorkFlowNodeStatus = table.Column<int>(type: "int", nullable: false),
                     SubmitTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
@@ -206,11 +163,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_work_demo_main", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_work_demo_main_ExtraPropertyDictionary_ExtraProperties~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -225,19 +177,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Remark = table.Column<string>(type: "longtext", nullable: true, comment: "工作流模板备注")
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_workflow_template", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_workflow_template_ExtraPropertyDictionary_ExtraPropert~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -255,10 +199,7 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     CompanyId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UserInfoId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    UserInfoId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -269,11 +210,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         principalTable: "Company",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_token_department_ExtraPropertyDictionary_ExtraPropertiesCount",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_department_token_user_info_UserInfoId",
                         column: x => x.UserInfoId,
@@ -291,19 +227,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     RoleId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UserInfoId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    UserInfoId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_menu_role_function", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_menu_role_function_ExtraPropertyDictionary_ExtraProper~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_menu_role_function_token_menu_MenuId",
                         column: x => x.MenuId,
@@ -332,19 +260,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     UserInfoId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     RoleId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_user_role_function", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_user_role_function_ExtraPropertyDictionary_ExtraProper~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_user_role_function_token_role_RoleId",
                         column: x => x.RoleId,
@@ -383,19 +303,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     HasBeenRead = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CurrentRoleCode = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_workflow_instance", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_workflow_instance_ExtraPropertyDictionary_ExtraPropert~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_workflow_instance_token_user_info_SponsorId",
                         column: x => x.SponsorId,
@@ -422,19 +334,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     NextNodeId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     Remark = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_workflow_node_template", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_workflow_node_template_ExtraPropertyDictionary_ExtraPr~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_workflow_node_template_token_workflow_template_Workflo~",
                         column: x => x.WorkflowTemplateId,
@@ -452,19 +356,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     UserInfoId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     DepartmentId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_user_department_function", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_user_department_function_ExtraPropertyDictionary_Extra~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_user_department_function_token_department_DepartmentId",
                         column: x => x.DepartmentId,
@@ -490,19 +386,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     WorkflowInstanceId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     WorkFlowFormCode = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_workflow_approvers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_workflow_approvers_ExtraPropertyDictionary_ExtraProper~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_workflow_approvers_token_workflow_instance_WorkflowIns~",
                         column: x => x.WorkflowInstanceId,
@@ -533,19 +421,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AuditDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     NodeStatus = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_workflowNode_instance", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_workflowNode_instance_ExtraPropertyDictionary_ExtraPro~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_workflowNode_instance_token_workflow_instance_Workflow~",
                         column: x => x.WorkflowInstanceId,
@@ -562,19 +442,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     WorkflowNodeTemplateId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     RoleId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ExtraPropertiesCount = table.Column<int>(type: "int", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_token_workflow_approval_role", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_token_workflow_approval_role_ExtraPropertyDictionary_ExtraPr~",
-                        column: x => x.ExtraPropertiesCount,
-                        principalTable: "ExtraPropertyDictionary",
-                        principalColumn: "Count");
                     table.ForeignKey(
                         name: "FK_token_workflow_approval_role_token_role_RoleId",
                         column: x => x.RoleId,
@@ -590,20 +462,68 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Company_ExtraPropertiesCount",
+            migrationBuilder.InsertData(
                 table: "Company",
-                column: "ExtraPropertiesCount");
+                columns: new[] { "Id", "Code", "CreationTime", "Describe", "IsDeleted", "Logo", "Name" },
+                values: new object[] { new Guid("735bceba-1761-4aba-9b78-7af4085236ec"), "wr", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), "微软（Microsoft）是一家 美国 跨国科技企业，由 比尔·盖茨 和 保罗·艾伦 于1975年4月4日创立。 公司总部设立在 华盛顿州 雷德蒙德 （Redmond，邻近 西雅图 ），以 研发 、 制造 、 授权 和提供广泛的 电脑软件 服务业务为主 。", false, null, "Microsoft" });
+
+            migrationBuilder.InsertData(
+                table: "token_menu",
+                columns: new[] { "Id", "Component", "CreationTime", "Icon", "Index", "IsDeleted", "Name", "ParentId", "Path", "Title" },
+                values: new object[,]
+                {
+                    { new Guid("3a845e2d-63df-4a84-b569-410db7194843"), "RoleConfig", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 0, false, "角色配置", new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "/system/roleConfig/index", "角色配置" },
+                    { new Guid("3d7547f1-43eb-4b3b-983b-3584b8498689"), "Home", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 0, false, "首页", null, "/home/index", "首页" },
+                    { new Guid("4c1b7f80-981e-464a-a376-f1bb4965d447"), "Work", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 3, false, "工作", null, "/Work/index", "工作" },
+                    { new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "System", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 2, false, "系统配置", null, "/system/index", "系统配置" },
+                    { new Guid("7c4de579-cf8f-434d-8951-46935d05e234"), "UserConfig", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 1, false, "用户权限配置", new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "/system/userConfig/index", "用户权限配置" },
+                    { new Guid("d73878e3-8f90-4ab8-8c57-548db98e3cd6"), "User", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 1, false, "用户管理", null, "/user/index", "用户管理" },
+                    { new Guid("f5b38af3-4cf2-4ad3-a249-56ac0f0ec94c"), "WorkConfig", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), null, 2, false, "工作流配置", new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), "/system/workConfig/index", "工作流配置" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "token_role",
+                columns: new[] { "Id", "Code", "CreationTime", "Index", "IsDeleted", "Name", "ParentId", "Remark" },
+                values: new object[] { new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), "admin", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), 0, false, "管理员", null, "系统管理员" });
+
+            migrationBuilder.InsertData(
+                table: "token_user_info",
+                columns: new[] { "Id", "AccountNumber", "CreationTime", "EMail", "HeadPortraits", "IsDeleted", "MobileNumber", "Name", "Password", "Sex", "Statue", "WXOpenId" },
+                values: new object[] { new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb"), "admin", new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), "239573049@qq.com", "https://upfile2.asqql.com/upfile/hdimg/wmtp/wmtp/2018-07/08/18_7_8_16_10_08yoqapqci.jpg", false, 13049809673L, "管理员", "Aa010426", 1, 0, null });
+
+            migrationBuilder.InsertData(
+                table: "token_department",
+                columns: new[] { "Id", "Code", "CompanyId", "CreationTime", "Index", "IsDeleted", "Name", "ParentId", "UserInfoId" },
+                values: new object[] { new Guid("e4fa71e6-0bb1-45d7-a744-088d57eb14da"), "cs", new Guid("735bceba-1761-4aba-9b78-7af4085236ec"), new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), 0, false, "测试部门", null, null });
+
+            migrationBuilder.InsertData(
+                table: "token_menu_role_function",
+                columns: new[] { "Id", "CreationTime", "IsDeleted", "MenuId", "RoleId", "UserInfoId" },
+                values: new object[,]
+                {
+                    { new Guid("119a73ca-28a8-48f5-a284-d626613db93c"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("4c1b7f80-981e-464a-a376-f1bb4965d447"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
+                    { new Guid("23b75d25-24da-493b-a83f-cca4ca3c0e4c"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("3a845e2d-63df-4a84-b569-410db7194843"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
+                    { new Guid("6508827b-1373-4631-af2f-1072ec77c531"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("f5b38af3-4cf2-4ad3-a249-56ac0f0ec94c"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
+                    { new Guid("7914a004-b082-423f-8ed4-1341c0e440cf"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("3d7547f1-43eb-4b3b-983b-3584b8498689"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
+                    { new Guid("952cf9b7-98ed-4e4a-9388-7bad259afbb8"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("6e0b2bdc-2a44-466a-9698-0ec884446d8e"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
+                    { new Guid("9f276a48-8753-425e-8e0c-63297b517e83"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("7c4de579-cf8f-434d-8951-46935d05e234"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null },
+                    { new Guid("cc363f8d-b471-469a-a9d1-bcfc8a81ae9b"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("d73878e3-8f90-4ab8-8c57-548db98e3cd6"), new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "token_user_role_function",
+                columns: new[] { "Id", "CreationTime", "IsDeleted", "RoleId", "UserInfoId" },
+                values: new object[] { new Guid("72e4ca93-3b60-4228-ba7b-c43fa049227a"), new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), false, new Guid("c1721287-6894-401b-aa0d-c73b28244e09"), new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb") });
+
+            migrationBuilder.InsertData(
+                table: "token_user_department_function",
+                columns: new[] { "Id", "CreationTime", "DepartmentId", "IsDeleted", "UserInfoId" },
+                values: new object[] { new Guid("75b64236-37c6-47c8-89c9-a5ec69bd2bf9"), new DateTime(2022, 6, 7, 2, 37, 17, 74, DateTimeKind.Local).AddTicks(9894), new Guid("e4fa71e6-0bb1-45d7-a744-088d57eb14da"), false, new Guid("eaff4959-293d-463f-afdb-ec22ab3b48bb") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_department_CompanyId",
                 table: "token_department",
                 column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_token_department_ExtraPropertiesCount",
-                table: "token_department",
-                column: "ExtraPropertiesCount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_department_Id",
@@ -616,19 +536,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "UserInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_menu_ExtraPropertiesCount",
-                table: "token_menu",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_menu_Id",
                 table: "token_menu",
                 column: "Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_token_menu_role_function_ExtraPropertiesCount",
-                table: "token_menu_role_function",
-                column: "ExtraPropertiesCount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_menu_role_function_Id",
@@ -651,19 +561,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "UserInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_role_ExtraPropertiesCount",
-                table: "token_role",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_role_Id",
                 table: "token_role",
                 column: "Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_token_system_message_ExtraPropertiesCount",
-                table: "token_system_message",
-                column: "ExtraPropertiesCount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_system_message_Id",
@@ -676,11 +576,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_user_department_function_ExtraPropertiesCount",
-                table: "token_user_department_function",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_user_department_function_Id",
                 table: "token_user_department_function",
                 column: "Id");
@@ -691,19 +586,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "UserInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_user_info_ExtraPropertiesCount",
-                table: "token_user_info",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_user_info_Id",
                 table: "token_user_info",
                 column: "Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_token_user_role_function_ExtraPropertiesCount",
-                table: "token_user_role_function",
-                column: "ExtraPropertiesCount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_user_role_function_Id",
@@ -721,19 +606,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "UserInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_work_demo_main_ExtraPropertiesCount",
-                table: "token_work_demo_main",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_work_demo_main_Id",
                 table: "token_work_demo_main",
                 column: "Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_token_workflow_approval_role_ExtraPropertiesCount",
-                table: "token_workflow_approval_role",
-                column: "ExtraPropertiesCount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_workflow_approval_role_Id",
@@ -751,11 +626,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "WorkflowNodeTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_workflow_approvers_ExtraPropertiesCount",
-                table: "token_workflow_approvers",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_workflow_approvers_Id",
                 table: "token_workflow_approvers",
                 column: "Id");
@@ -764,11 +634,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 name: "IX_token_workflow_approvers_WorkflowInstanceId",
                 table: "token_workflow_approvers",
                 column: "WorkflowInstanceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_token_workflow_instance_ExtraPropertiesCount",
-                table: "token_workflow_instance",
-                column: "ExtraPropertiesCount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_workflow_instance_Id",
@@ -786,11 +651,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "WorkflowTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_workflow_node_template_ExtraPropertiesCount",
-                table: "token_workflow_node_template",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_workflow_node_template_Id",
                 table: "token_workflow_node_template",
                 column: "Id");
@@ -801,19 +661,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                 column: "WorkflowTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_token_workflow_template_ExtraPropertiesCount",
-                table: "token_workflow_template",
-                column: "ExtraPropertiesCount");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_token_workflow_template_Id",
                 table: "token_workflow_template",
                 column: "Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_token_workflowNode_instance_ExtraPropertiesCount",
-                table: "token_workflowNode_instance",
-                column: "ExtraPropertiesCount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_token_workflowNode_instance_Id",
@@ -828,6 +678,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ExtraPropertyDictionary");
+
             migrationBuilder.DropTable(
                 name: "token_menu_role_function");
 
@@ -875,9 +728,6 @@ namespace Token.Management.EntityFrameworkCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "token_workflow_template");
-
-            migrationBuilder.DropTable(
-                name: "ExtraPropertyDictionary");
         }
     }
 }

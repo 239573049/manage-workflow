@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.Shared;
@@ -15,7 +15,8 @@ public static class EntityFrameworkCoreInitialData
     /// <param name="model"></param>
     public static void Initia(this ModelBuilder model)
     {
-        var now=DateTime.Now;
+
+        var now = DateTime.Now;
         var userInfoData = new List<UserInfo>()
         {
             new(Guid.NewGuid())
@@ -34,13 +35,13 @@ public static class EntityFrameworkCoreInitialData
 
         model.Entity<UserInfo>().HasData(userInfoData);
 
-        var roleData =new Role(Guid.NewGuid())
-            {
-                Name = "管理员",
-                Code = "admin",
-                Index = 0,
-                Remark = "系统管理员",
-                CreationTime = now,
+        var roleData = new Role(Guid.NewGuid())
+        {
+            Name = "管理员",
+            Code = "admin",
+            Index = 0,
+            Remark = "系统管理员",
+            CreationTime = now,
         };
         model.Entity<Role>().HasData(roleData);
 
@@ -66,7 +67,8 @@ public static class EntityFrameworkCoreInitialData
         var userDepartmentFunction = new List<UserDepartmentFunction>();
         foreach (var u in userInfoData)
         {
-            userDepartmentFunction.Add(new UserDepartmentFunction(Guid.NewGuid()) {
+            userDepartmentFunction.Add(new UserDepartmentFunction(Guid.NewGuid())
+            {
                 UserInfoId = u.Id,
                 DepartmentId = departmentData.Id,
                 CreationTime = now,
@@ -74,7 +76,7 @@ public static class EntityFrameworkCoreInitialData
             userRole.Add(new UserRoleFunction(Guid.NewGuid())
             {
                 UserInfoId = u.Id,
-                RoleId= roleData.Id,
+                RoleId = roleData.Id,
                 CreationTime = now,
             });
         }
@@ -123,7 +125,7 @@ public static class EntityFrameworkCoreInitialData
         {
             CreationTime = now,
             Component = "UserConfig",
-            Index =1,
+            Index = 1,
             Name = "用户权限配置",
             ParentId = menuSystem.Id,
             Path = "/system/userConfig/index",
@@ -162,9 +164,10 @@ public static class EntityFrameworkCoreInitialData
 
         foreach (var d in menu)
         {
-            menuRoleFunction.Add(new MenuRoleFunction(Guid.NewGuid()) {
-                MenuId=d.Id,
-                RoleId= roleData.Id,
+            menuRoleFunction.Add(new MenuRoleFunction(Guid.NewGuid())
+            {
+                MenuId = d.Id,
+                RoleId = roleData.Id,
             });
         }
         model.Entity<MenuRoleFunction>().HasData(menuRoleFunction);

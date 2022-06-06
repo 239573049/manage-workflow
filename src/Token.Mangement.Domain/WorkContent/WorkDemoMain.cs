@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Base;
+using Token.Management.Domain.Base;
 
 namespace Token.Management.Domain.WorkContent;
 
