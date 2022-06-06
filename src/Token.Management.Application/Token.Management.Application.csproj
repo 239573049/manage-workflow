@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.Core" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="5.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Token.HttpApi\Token.HttpApi.csproj" />
+    <ProjectReference Include="..\Token.Infrastructure\Token.Infrastructure.csproj" />
+    <ProjectReference Include="..\Token.Management.Application.Contracts\Token.Management.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
