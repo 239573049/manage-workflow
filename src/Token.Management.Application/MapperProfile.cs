@@ -1,5 +1,6 @@
 using AutoMapper;
 using Token.Infrastructure.Extension;
+using Token.Management.Application.Contracts.AppServices.WorkContent;
 using Token.Management.Application.Contracts.Module.Management;
 using Token.Management.Application.Contracts.Module.Management.AccessFunction;
 using Token.Management.Application.Contracts.Module.Users;
@@ -8,6 +9,7 @@ using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.Shared;
 using Token.Management.Domain.Users;
+using Token.Management.Domain.WorkContent;
 using Token.Management.Domain.WorkFlow;
 
 namespace Token.Management.Application;
@@ -52,6 +54,14 @@ public class MapperProfile : Profile
         CreateMap<WorkflowNodeTemplateDto, WorkflowNodeTemplate>();
         CreateMap<WorkflowTemplate, WorkflowTemplateDto>();
         CreateMap<WorkflowTemplateDto, WorkflowTemplate>();
+        #endregion
+
+        #region WorkDemo
+
+        CreateMap<WorkDemoMainDto,WorkDemoMain>();
+        CreateMap<WorkDemoMain,WorkDemoMainDto>();
+
+
         #endregion
     }
 }

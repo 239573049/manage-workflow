@@ -81,17 +81,17 @@ public class WorkflowInstance : Entity<Guid>, ISoftDelete, IHasCreationTime
     /// </summary>
     public UserInfo? Sponsor { get; set; }
 
-    public WorkflowTemplate? WorkflowTemplate { get; set; }
+    public virtual WorkflowTemplate? WorkflowTemplate { get; set; }
 
     /// <summary>
     ///     已审核人员信息
     /// </summary>
-    public List<WorkflowApprovers> WorkflowApprovers { get; set; } = new();
+    public virtual List<WorkflowApprovers> WorkflowApprovers { get; set; } = new();
 
     /// <summary>
     ///     当前实际的流程节点
     /// </summary>
-    public List<WorkflowNodeInstance> WorkflowNodeInstances { get; set; } = new();
+    public virtual List<WorkflowNodeInstance> WorkflowNodeInstances { get; set; } = new();
 
     public bool IsDeleted { get; set; }
 

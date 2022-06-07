@@ -15,6 +15,11 @@ public class WorkFlowStatus : Entity<Guid>, ISoftDelete
     public WorkFlowNodeStatusEnum WorkFlowNodeStatus { get; set; }
 
     /// <summary>
+    /// 实例id
+    /// </summary>
+    public Guid? WorkflowInstanceId { get; set; }
+
+    /// <summary>
     ///     提交时间
     /// </summary>
     public DateTime? SubmitTime { get; set; }

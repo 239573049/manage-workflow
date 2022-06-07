@@ -15,20 +15,20 @@ public enum WorkFlowNodeStatusEnum
     /// <summary>
     ///     通过
     /// </summary>
-    [Description("通过")] Pass,
+    [Description("通过")] Pass=1,
 
     /// <summary>
     ///     未处理
     /// </summary>
-    [Description("未处理")] UnDeal,
+    [Description("未处理")] UnDeal=2,
 
     /// <summary>
     ///     终止【用作当前整个流程终止】
     /// </summary>
-    [Description("终止")] Terminate,
+    [Description("终止")] Terminate=3,
 
     /// <summary>
     ///     撤回
     /// </summary>
-    [Description("未处理")] Withdraw = 5
+    [Description("未处理")] Withdraw = 4
 }

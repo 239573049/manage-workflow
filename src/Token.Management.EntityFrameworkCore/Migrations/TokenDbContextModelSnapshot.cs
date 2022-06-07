@@ -55,59 +55,59 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f808acc8-a746-46ee-b1be-97d7decd254c"),
+                            Id = new Guid("07f07059-3c28-4517-9cab-754ee22955c1"),
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            MenuId = new Guid("5de1db7f-d249-43f5-9230-3833544b87b1"),
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d")
+                            MenuId = new Guid("cb90ab74-4ba5-4286-9ffc-f579e1de4afa"),
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64")
                         },
                         new
                         {
-                            Id = new Guid("3522f2b4-d35b-4913-8425-7c5e3006aa21"),
+                            Id = new Guid("7d8114c9-9e9e-4463-a2ee-e78799aca22a"),
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            MenuId = new Guid("da57bf0e-6c03-4ef4-a2ac-0cf576c3b0b5"),
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d")
+                            MenuId = new Guid("1eee3f07-9612-47d0-9897-c1d4fce15414"),
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64")
                         },
                         new
                         {
-                            Id = new Guid("d879ae65-3f52-4870-bf6e-83c94dc66bb0"),
+                            Id = new Guid("43730628-a3b5-48e5-94dd-7d79d28156e4"),
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            MenuId = new Guid("fafbe9c5-6b41-4981-8ebc-f30917b32c87"),
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d")
+                            MenuId = new Guid("741f6e15-143d-489a-b747-38f106481d0b"),
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64")
                         },
                         new
                         {
-                            Id = new Guid("f51c106b-2e88-4739-b259-1c97d380f6f9"),
+                            Id = new Guid("1db2cf2f-d354-4093-b621-1dc94a5a4f3a"),
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            MenuId = new Guid("5b3c39c8-f212-4105-85ae-cf34422d6026"),
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d")
+                            MenuId = new Guid("fee42ae9-c72d-4df0-8094-efa024d1c6e5"),
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64")
                         },
                         new
                         {
-                            Id = new Guid("07109f16-fa61-41c7-a396-1ff420c46da7"),
+                            Id = new Guid("484e547c-26b4-49d7-8f0d-bd2107380951"),
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            MenuId = new Guid("4ac2f4d0-990b-4be1-9409-46fe034b2aa4"),
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d")
+                            MenuId = new Guid("6f1eed56-e99c-4100-a0f9-4df39f14a0ca"),
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64")
                         },
                         new
                         {
-                            Id = new Guid("1ab255af-c439-425c-b2a8-767bd3a801f7"),
+                            Id = new Guid("59e92709-2366-4b66-8462-41f62620c48b"),
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            MenuId = new Guid("05abe233-4252-499e-b91b-5721d784ab36"),
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d")
+                            MenuId = new Guid("dc7de715-7147-4fd9-95eb-c062c126ea72"),
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64")
                         },
                         new
                         {
-                            Id = new Guid("d8aac5ab-557e-4d1d-9a86-7d9a9d0e6cef"),
+                            Id = new Guid("df0e69b1-eadd-457f-8d76-c7808c065582"),
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            MenuId = new Guid("fbfdfdb4-69ea-46d9-8740-d62ffb22f87d"),
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d")
+                            MenuId = new Guid("07bf458c-029a-4826-a5af-d9d51edb4020"),
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64")
                         });
                 });
 
@@ -142,11 +142,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c320a3d6-40b8-48cc-ab80-74a4a7f120cd"),
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
-                            DepartmentId = new Guid("96017ff8-52cd-4d85-b7b8-474b1bf51de0"),
+                            Id = new Guid("f071ae1b-c55c-44c1-8f94-6b4bfeb9bc0f"),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
+                            DepartmentId = new Guid("bd809e02-4630-422d-bf82-8d77c2140b08"),
                             IsDeleted = false,
-                            UserInfoId = new Guid("665203a9-6328-4358-a1f2-6588802c393b")
+                            UserInfoId = new Guid("c46acc21-5067-4611-a5a1-1ce653c33e84")
                         });
                 });
 
@@ -181,11 +181,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6ee0907d-bb79-4b6c-9c96-f6d8b3f5a958"),
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            Id = new Guid("b94fada4-5433-49b1-bc06-9b553a8a2ed4"),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             IsDeleted = false,
-                            RoleId = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d"),
-                            UserInfoId = new Guid("665203a9-6328-4358-a1f2-6588802c393b")
+                            RoleId = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64"),
+                            UserInfoId = new Guid("c46acc21-5067-4611-a5a1-1ce653c33e84")
                         });
                 });
 
@@ -222,9 +222,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5e69bd0f-1b25-459a-b5cb-bb7086821d1c"),
+                            Id = new Guid("b5c12e64-e349-48b2-b9ea-3b21eb3e9e4b"),
                             Code = "wr",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Describe = "微软（Microsoft）是一家 美国 跨国科技企业，由 比尔·盖茨 和 保罗·艾伦 于1975年4月4日创立。 公司总部设立在 华盛顿州 雷德蒙德 （Redmond，邻近 西雅图 ），以 研发 、 制造 、 授权 和提供广泛的 电脑软件 服务业务为主 。",
                             IsDeleted = false,
                             Name = "Microsoft"
@@ -274,10 +274,10 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("96017ff8-52cd-4d85-b7b8-474b1bf51de0"),
+                            Id = new Guid("bd809e02-4630-422d-bf82-8d77c2140b08"),
                             Code = "cs",
-                            CompanyId = new Guid("5e69bd0f-1b25-459a-b5cb-bb7086821d1c"),
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CompanyId = new Guid("b5c12e64-e349-48b2-b9ea-3b21eb3e9e4b"),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 0,
                             IsDeleted = false,
                             Name = "测试部门"
@@ -326,9 +326,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5de1db7f-d249-43f5-9230-3833544b87b1"),
+                            Id = new Guid("cb90ab74-4ba5-4286-9ffc-f579e1de4afa"),
                             Component = "Home",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 0,
                             IsDeleted = false,
                             Name = "首页",
@@ -337,9 +337,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         },
                         new
                         {
-                            Id = new Guid("da57bf0e-6c03-4ef4-a2ac-0cf576c3b0b5"),
+                            Id = new Guid("1eee3f07-9612-47d0-9897-c1d4fce15414"),
                             Component = "User",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 1,
                             IsDeleted = false,
                             Name = "用户管理",
@@ -348,9 +348,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fafbe9c5-6b41-4981-8ebc-f30917b32c87"),
+                            Id = new Guid("741f6e15-143d-489a-b747-38f106481d0b"),
                             Component = "System",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 2,
                             IsDeleted = false,
                             Name = "系统配置",
@@ -359,9 +359,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5b3c39c8-f212-4105-85ae-cf34422d6026"),
+                            Id = new Guid("fee42ae9-c72d-4df0-8094-efa024d1c6e5"),
                             Component = "Work",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 3,
                             IsDeleted = false,
                             Name = "工作",
@@ -370,37 +370,37 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4ac2f4d0-990b-4be1-9409-46fe034b2aa4"),
+                            Id = new Guid("6f1eed56-e99c-4100-a0f9-4df39f14a0ca"),
                             Component = "UserConfig",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 1,
                             IsDeleted = false,
                             Name = "用户权限配置",
-                            ParentId = new Guid("fafbe9c5-6b41-4981-8ebc-f30917b32c87"),
+                            ParentId = new Guid("741f6e15-143d-489a-b747-38f106481d0b"),
                             Path = "/system/userConfig/index",
                             Title = "用户权限配置"
                         },
                         new
                         {
-                            Id = new Guid("05abe233-4252-499e-b91b-5721d784ab36"),
+                            Id = new Guid("dc7de715-7147-4fd9-95eb-c062c126ea72"),
                             Component = "RoleConfig",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 0,
                             IsDeleted = false,
                             Name = "角色配置",
-                            ParentId = new Guid("fafbe9c5-6b41-4981-8ebc-f30917b32c87"),
+                            ParentId = new Guid("741f6e15-143d-489a-b747-38f106481d0b"),
                             Path = "/system/roleConfig/index",
                             Title = "角色配置"
                         },
                         new
                         {
-                            Id = new Guid("fbfdfdb4-69ea-46d9-8740-d62ffb22f87d"),
+                            Id = new Guid("07bf458c-029a-4826-a5af-d9d51edb4020"),
                             Component = "WorkConfig",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 2,
                             IsDeleted = false,
                             Name = "工作流配置",
-                            ParentId = new Guid("fafbe9c5-6b41-4981-8ebc-f30917b32c87"),
+                            ParentId = new Guid("741f6e15-143d-489a-b747-38f106481d0b"),
                             Path = "/system/workConfig/index",
                             Title = "工作流配置"
                         });
@@ -447,9 +447,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5610d63a-183d-47a4-ab82-5d308ac15b8d"),
+                            Id = new Guid("420a80c3-42b0-47b7-b491-46bee216ac64"),
                             Code = "admin",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             Index = 0,
                             IsDeleted = false,
                             Name = "管理员",
@@ -542,9 +542,9 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("665203a9-6328-4358-a1f2-6588802c393b"),
+                            Id = new Guid("c46acc21-5067-4611-a5a1-1ce653c33e84"),
                             AccountNumber = "admin",
-                            CreationTime = new DateTime(2022, 6, 7, 23, 43, 5, 390, DateTimeKind.Local).AddTicks(6630),
+                            CreationTime = new DateTime(2022, 6, 8, 1, 31, 8, 952, DateTimeKind.Local).AddTicks(5195),
                             EMail = "239573049@qq.com",
                             HeadPortraits = "https://upfile2.asqql.com/upfile/hdimg/wmtp/wmtp/2018-07/08/18_7_8_16_10_08yoqapqci.jpg",
                             IsDeleted = false,
@@ -556,6 +556,47 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Token.Management.Domain.WorkContent.WorkContentDemo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("PrincipalId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("SubmitTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("WorkDemoMainId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("WorkFlowNodeStatus")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("WorkflowInstanceId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("PrincipalId");
+
+                    b.HasIndex("WorkDemoMainId");
+
+                    b.ToTable("token_work_content_demo", (string)null);
+                });
+
             modelBuilder.Entity("Token.Management.Domain.WorkContent.WorkDemoMain", b =>
                 {
                     b.Property<Guid>("Id")
@@ -565,8 +606,8 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -577,7 +618,7 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Property<string>("Remark")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("SubmitTime")
+                    b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("WorkFlowNodeStatus")
@@ -912,6 +953,25 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("Token.Management.Domain.WorkContent.WorkContentDemo", b =>
+                {
+                    b.HasOne("Token.Management.Domain.Users.UserInfo", "Principal")
+                        .WithMany()
+                        .HasForeignKey("PrincipalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Token.Management.Domain.WorkContent.WorkDemoMain", "WorkDemoMain")
+                        .WithMany("WorkContentDemo")
+                        .HasForeignKey("WorkDemoMainId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Principal");
+
+                    b.Navigation("WorkDemoMain");
+                });
+
             modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowApprovalRole", b =>
                 {
                     b.HasOne("Token.Management.Domain.Management.Role", "Role")
@@ -1002,6 +1062,11 @@ namespace Token.Management.EntityFrameworkCore.Migrations
                     b.Navigation("UserDepartmentFunction");
 
                     b.Navigation("UserRoleFunction");
+                });
+
+            modelBuilder.Entity("Token.Management.Domain.WorkContent.WorkDemoMain", b =>
+                {
+                    b.Navigation("WorkContentDemo");
                 });
 
             modelBuilder.Entity("Token.Management.Domain.WorkFlow.WorkflowInstance", b =>

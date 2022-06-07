@@ -160,6 +160,14 @@ public static class EntityFrameworkCoreConfig
             x.HasKey(x => x.Id);
         });
 
+        builder.Entity<WorkContentDemo>(x =>
+        {
+            x.ToTable("token_work_content_demo");
+
+            x.HasIndex(x => x.Id);
+            x.HasKey(x => x.Id);
+
+        });
         return builder;
     }
 }
