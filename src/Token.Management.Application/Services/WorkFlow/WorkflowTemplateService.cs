@@ -3,9 +3,11 @@ using Management.Application.Services.Management;
 using Token.HttpApi;
 using Token.Infrastructure.Extension;
 using Token.Management.Application.Contracts.AppServices.WorkFlow;
+using Token.Management.Application.Contracts.Module;
 using Token.Management.Application.Contracts.Module.Users;
 using Token.Management.Application.Contracts.Module.WorkFlow;
 using Token.Management.Domain;
+using Token.Management.Domain.Users;
 using Token.Management.Domain.WorkFlow;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -14,20 +16,17 @@ namespace Token.Management.Application.Services.WorkFlow;
 
 public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateService
 {
-    private readonly IMapper _mapper;
     private readonly IRoleService _iRoleService;
     private readonly IPrincipalAccessor _principalAccessor;
     private readonly IWorkflowTemplateRepository _workflowTemplateRepository;
     private readonly IWorkflowApprovalRoleRepository _workflowApprovalRoleRepository;
     private readonly IWorkflowNodeTemplateRepository _workflowNodeTemplateRepository;
     public WorkflowTemplateService(
-        IMapper mapper,
         IRoleService iRoleService,
         IPrincipalAccessor principalAccessor,
         IWorkflowApprovalRoleRepository workflowApprovalRoleRepository,
         IWorkflowNodeTemplateRepository workflowNodeTemplateRepository, IWorkflowTemplateRepository workflowTemplateRepository)
     {
-        _mapper = mapper;
         _iRoleService = iRoleService;
         _principalAccessor = principalAccessor;
         _workflowApprovalRoleRepository = workflowApprovalRoleRepository;
@@ -50,12 +49,12 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
 
     public async Task<WorkflowNodeTemplateDto> CreateWorkflowNodeTemplate(WorkflowNodeTemplateDto templateDto)
     {
-        var data = _mapper.Map<WorkflowNodeTemplate>(templateDto);
+        var data = ObjectMapper.Map<WorkflowNodeTemplateDto,WorkflowNodeTemplate>(templateDto);
         var code = await _workflowNodeTemplateRepository.GetWorkflowNodeTemplateMaxIndex(templateDto.WorkflowTemplateId);
         data.Code = code;
         data = await _workflowNodeTemplateRepository.InsertAsync(data);
 
-        return _mapper.Map<WorkflowNodeTemplateDto>(data);
+        return ObjectMapper.Map<WorkflowNodeTemplate,WorkflowNodeTemplateDto>(data);
     }
 
     public async Task<WorkflowTemplateDto> CreateWorkflowTemplate(WorkflowTemplateDto workflow)
@@ -69,14 +68,14 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
         if (await _workflowTemplateRepository.AnyAsync(a => a.Name == workflow.Name || a.Code == workflow.Code))
             throw new BusinessException("模板编号或者模板名称重复");
 
-        var data = _mapper.Map<WorkflowTemplate>(workflow);
+        var data = ObjectMapper.Map<WorkflowTemplateDto,WorkflowTemplate>(workflow);
 
         data.WorkflowInstance = new List<WorkflowInstance>();
 
         data = await _workflowTemplateRepository.InsertAsync(data);
 
 
-        return _mapper.Map<WorkflowTemplateDto>(data);
+        return ObjectMapper.Map<WorkflowTemplate,WorkflowTemplateDto>(data);
     }
 
     public async Task DeleteWorkflowNodeTemplate(Guid workflowNodeId)
@@ -119,17 +118,16 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
             .GetListAsync(a => a.WorkflowTemplateId == workflowId)).OrderBy(x => x.Code)
             .ToList();
 
-        return _mapper.Map<List<WorkflowNodeTemplateDto>>(data);
+        return ObjectMapper.Map<List<WorkflowNodeTemplate>,List<WorkflowNodeTemplateDto>>(data);
     }
 
-    public async Task<(List<WorkflowTemplateDto>, int)> GetWorkflowTemplatePage(string? name, int pageNo = 1, int pageSize = 20)
+    public async Task<(List<WorkflowTemplateDto>, int)> GetWorkflowTemplatePage(string? name, PageInput input)
     {
         var data =
             await _workflowTemplateRepository
-                .GetPageListAsync(a => (string.IsNullOrEmpty(name) || a.Name!.ToLower().Contains(name.ToLower())),
-                    a => a.CreationTime, pageNo, pageSize);
+                .GetPageListAsync(name, input.SkipCount, input.MaxResultCount);
 
-        return (_mapper.Map<List<WorkflowTemplateDto>>(data.Item1), data.Item2);
+        return (ObjectMapper.Map<List<WorkflowTemplate>,List<WorkflowTemplateDto>>(data.Item1), data.Item2);
     }
 
     public async Task UpdateWorkflowNodeTemplate(WorkflowNodeTemplateDto workflowNodeTemplate)
@@ -147,11 +145,11 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
 
     public async Task<List<WorkflowNodeTemplateDto>> UpdateWorkflowNodeTemplateIndex(List<WorkflowNodeTemplateDto> workflows)
     {
-        var data = _mapper.Map<List<WorkflowNodeTemplate>>(workflows);
+        var data = ObjectMapper.Map<List<WorkflowNodeTemplateDto>,List<WorkflowNodeTemplate>>(workflows);
 
         UpdateWorkflowNodeTemplateHandleIndex(data);
 
-        return await Task.FromResult(_mapper.Map<List<WorkflowNodeTemplateDto>>(data));
+        return await Task.FromResult(ObjectMapper.Map<List<WorkflowNodeTemplate>,List<WorkflowNodeTemplateDto>>(data));
     }
 
     public void UpdateWorkflowNodeTemplateHandleIndex(List<WorkflowNodeTemplate> workflows)
@@ -176,7 +174,7 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
         if (await _workflowTemplateRepository.AnyAsync(a => workflow.Id != a.Id && (a.Name == workflow.Name || a.Code == workflow.Code)))
             throw new BusinessException("模板编号或者模板名称重复");
 
-        _mapper.Map(workflow, data);
+        ObjectMapper.Map(workflow, data);
 
         await _workflowTemplateRepository.UpdateAsync(data);
 
@@ -187,7 +185,7 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
     {
         var data = await _workflowTemplateRepository.GetListAsync();
 
-        return _mapper.Map<List<WorkflowTemplateDto>>(data);
+        return ObjectMapper.Map<List<WorkflowTemplate>,List<WorkflowTemplateDto>>(data);
     }
 
     public async Task<Guid?> GetsTheNextNode(Guid id)
@@ -201,7 +199,7 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
     {
         var data = await _workflowNodeTemplateRepository.GetListAsync(a => a.Id == workTemplateId);
 
-        return _mapper.Map<List<WorkflowNodeTemplateDto>>(data);
+        return ObjectMapper.Map<List<WorkflowNodeTemplate>,List<WorkflowNodeTemplateDto>>(data);
     }
 
     public async Task<List<WorkflowNodeRoleUserInfoDto>> GetWorkflowNodeRoleUserInfoDto(Guid workTemplateId)
@@ -209,6 +207,7 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
         var data = await _workflowNodeTemplateRepository.GetListAsync(a => a.WorkflowTemplateId == workTemplateId);
 
         var roles = data.SelectMany(a => a.WorkflowApprovalRole).Select(a => a.RoleId).ToList();
+
         var userInfo = await _iRoleService.GetRoleUserAllAsync(roles);
         var workflowNodeRoleUserInfos = new List<WorkflowNodeRoleUserInfoDto>();
         foreach (var d in data)
@@ -218,7 +217,8 @@ public class WorkflowTemplateService : ApplicationService, IWorkflowTemplateServ
                 Id = d.Id,
                 Code = d.Code,
                 Remark = d.Remark,
-                UserInfo = _mapper.Map<List<UserInfoDto>>(userInfo.FindAll(a => d.WorkflowApprovalRole.Select(a => a.RoleId).Contains(a.RoleId)).Distinct())
+                UserInfo = ObjectMapper
+                    .Map<IEnumerable<UserInfo>,List<UserInfoDto>>(userInfo.FindAll(a => d.WorkflowApprovalRole.Select(a => a.RoleId).Contains(a.RoleId)).Select(x=>x.UserInfo).Distinct())
             };
             workflowNodeRoleUserInfos.Add(workflowNodeRoleUserInfo);
         }

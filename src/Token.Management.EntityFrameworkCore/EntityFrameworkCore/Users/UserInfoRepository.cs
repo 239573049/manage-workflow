@@ -24,7 +24,8 @@ public class UserInfoRepository:EfCoreRepository<TokenDbContext,UserInfo,Guid>,I
                 .WhereIf(endTime.HasValue, x => x.CreationTime <= endTime)
                 .WhereIf(!keyword.IsNullOrWhiteSpace(),
                     x => x.Name.Contains(keyword) || x.AccountNumber.Contains(keyword))
-                .WhereIf(status.HasValue, x => x.Status == (StatueEnum?)status);
+                .WhereIf(status.HasValue, x => x.Status == (StatusEnum?)status);
+
         var count =await quer.CountAsync();
 
         var result =await quer.PageBy(skipCount, maxResultCount).ToListAsync();

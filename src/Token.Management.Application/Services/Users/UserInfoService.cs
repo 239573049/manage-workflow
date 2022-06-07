@@ -1,6 +1,7 @@
 ﻿using Token.HttpApi;
 using Token.Infrastructure.Extension;
 using Token.Management.Application.Contracts.AppServices.Users;
+using Token.Management.Application.Contracts.Module;
 using Token.Management.Application.Contracts.Module.Management;
 using Token.Management.Application.Contracts.Module.Users;
 using Token.Management.Domain;
@@ -63,12 +64,13 @@ public class UserInfoService : ApplicationService, IUserInfoService
     {
         var data = await _userInfoRepository.GetAsync(a => a.Id == userId);
         var departments=data.Department;
+
         return ObjectMapper.Map<List<Department>,List<DepartmentDto>>(departments);
     }
 
-    public async Task<Tuple<List<UserInfoDto>, int>> GetUserInfoPaging(string? code, DateTime? startTime, DateTime? endTime, sbyte status = -1, int pageNo = 1, int pageSize = 20)
+    public async Task<Tuple<List<UserInfoDto>, int>> GetUserInfoPaging(UserInfoPagingInput input)
     {
-        var data = await _userInfoRepository.GetListAsync(startTime,endTime,code,status,pageNo,pageSize);
+        var data = await _userInfoRepository.GetListAsync(input.StartTime,input.EndTime,input.Keyword,input.Status,input.SkipCount,input.MaxResultCount);
 
         return new Tuple<List<UserInfoDto>, int>(ObjectMapper.Map<List<UserInfo>,List<UserInfoDto>>(data.Item1),data.Item2);
     }
@@ -80,12 +82,11 @@ public class UserInfoService : ApplicationService, IUserInfoService
             throw new BusinessException("用户不存在或者已经被删除");
 
         data.Name = userInfo.Name;
-        data.Status = userInfo.Statue;
+        data.Status = userInfo.Status;
         data.Sex =(SexEnum) userInfo.Sex;
         data.MobileNumber = userInfo.MobileNumber;
         data.EMail=userInfo.EMail;
         await _userInfoRepository.UpdateAsync(data);
-
 
         return ObjectMapper.Map<UserInfo,UserInfoDto>(data);
     }

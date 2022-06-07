@@ -7,7 +7,7 @@ namespace Token.Management.Domain.Base;
 /// <summary>
 ///
 /// </summary>
-public class WorkFlowStatue : Entity<Guid>, ISoftDelete
+public class WorkFlowStatus : Entity<Guid>, ISoftDelete
 {
     /// <summary>
     ///     表单工作流状态

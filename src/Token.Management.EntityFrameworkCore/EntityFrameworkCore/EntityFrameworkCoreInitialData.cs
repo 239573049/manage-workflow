@@ -30,7 +30,7 @@ public static class EntityFrameworkCoreInitialData
                 Name="管理员",
                 Password=des.DESEncrypt("123456"),
                 CreationTime=now,
-                Status =StatueEnum.Enable
+                Status =StatusEnum.Enable
             },
         };
 

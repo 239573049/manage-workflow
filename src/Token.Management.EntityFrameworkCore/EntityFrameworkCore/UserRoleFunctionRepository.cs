@@ -61,4 +61,14 @@ public class UserRoleFunctionRepository:EfCoreRepository<TokenDbContext,UserRole
         return await query
             .Select(select).ToListAsync();
     }
+
+    public async Task<List<UserInfo>> GetUserInfoAsync(Expression<Func<UserRoleFunction, bool>> expression)
+    {
+        var dbContext = await GetDbContextAsync();
+
+        var query = dbContext.UserRoleFunction.Where(expression)
+            .Select(x=>x.UserInfo);
+
+        return await query.ToListAsync();
+    }
 }

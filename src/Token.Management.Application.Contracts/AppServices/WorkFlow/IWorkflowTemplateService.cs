@@ -1,4 +1,5 @@
-﻿using Token.Management.Application.Contracts.Module.WorkFlow;
+﻿using Token.Management.Application.Contracts.Module;
+using Token.Management.Application.Contracts.Module.WorkFlow;
 using Token.Management.Domain.WorkFlow;
 
 namespace Token.Management.Application.Contracts.AppServices.WorkFlow;
@@ -16,10 +17,9 @@ public interface IWorkflowTemplateService
     ///     获取模板
     /// </summary>
     /// <param name="name"></param>
-    /// <param name="pageNo"></param>
-    /// <param name="pageSize"></param>
+    /// <param name="input"></param>
     /// <returns></returns>
-    Task<(List<WorkflowTemplateDto>, int)> GetWorkflowTemplatePage(string? name, int pageNo = 1, int pageSize = 20);
+    Task<(List<WorkflowTemplateDto>, int)> GetWorkflowTemplatePage(string? name, PageInput input);
 
     /// <summary>
     ///     删除模板
@@ -43,7 +43,7 @@ public interface IWorkflowTemplateService
     Task<List<WorkflowNodeTemplateDto>> GetWorkflowNodeTemplates(Guid workflowId);
 
     /// <summary>
-    ///     获取节点已存在角色
+    /// 获取节点已存在角色
     /// </summary>
     /// <param name="workflowNodeId"></param>
     /// <returns></returns>

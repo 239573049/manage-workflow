@@ -2,6 +2,7 @@
 using Token.HttpApi;
 using Token.Infrastructure;
 using Token.Management.Application.Contracts.AppServices.WorkFlow;
+using Token.Management.Application.Contracts.Module;
 using Token.Management.Application.Contracts.Module.WorkFlow;
 using Token.Management.Domain;
 using Token.ManagementApi.Host.Module;
@@ -43,7 +44,7 @@ public class WorkflowTemplateController : BaseController
     public async Task<PagingModelView<List<WorkflowTemplateDto>>> GetWorkflowTemplatePage(string? name, int pageNo = 1,
         int pageSize = 20)
     {
-        var data = await _workflowTemplateService.GetWorkflowTemplatePage(name, pageNo, pageSize);
+        var data = await _workflowTemplateService.GetWorkflowTemplatePage(name, new PageInput(){PageNo =pageNo,PageSize =pageSize});
         return new PagingModelView<List<WorkflowTemplateDto>>(SerialNumberHelper.GetList(data.Item1, pageNo, pageSize),
             data.Item2);
     }

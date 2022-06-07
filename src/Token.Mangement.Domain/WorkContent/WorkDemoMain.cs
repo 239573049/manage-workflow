@@ -5,7 +5,7 @@ namespace Token.Management.Domain.WorkContent;
 /// <summary>
 /// 工作流Demo
 /// </summary>
-public class WorkDemoMain : WorkFlowStatue
+public class WorkDemoMain : WorkFlowStatus
 {
     public string? Name { get; set; }
     public string? Remark { get; set; }

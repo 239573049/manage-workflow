@@ -45,4 +45,11 @@ public interface IUserRoleFunctionRepository:IRepository<UserRoleFunction,Guid>
     Task<List<TEntity>> GetListAsync<TEntity,TProperty>(Expression<Func<UserRoleFunction,bool>> expression,
         Expression<Func<UserRoleFunction,TEntity>> select,Expression<Func<UserRoleFunction,TProperty>>? property=null);
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="exception"></param>
+    /// <returns></returns>
+    Task<List<UserInfo>> GetUserInfoAsync(Expression<Func<UserRoleFunction,bool>> expression);
+
 }

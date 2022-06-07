@@ -3,6 +3,7 @@ using Token.Management.Application.Contracts.Module.Management;
 using Token.Management.Application.Contracts.Module.Users;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
+using Token.Management.Domain.Users;
 
 namespace Management.Application.Services.Management;
 
@@ -25,7 +26,7 @@ public interface IRoleService
     Task<List<MenuTreeDto>> RecursionUserMenu(List<Menu> roles, List<Guid> menuIds, Guid parentId);
 
     /// <summary>
-    ///     获取角色分页数据
+    /// 获取角色分页数据
     /// </summary>
     /// <param name="name"></param>
     /// <param name="startTime"></param>

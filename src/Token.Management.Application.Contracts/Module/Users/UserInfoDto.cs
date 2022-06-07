@@ -1,4 +1,4 @@
-﻿using Token.Management.Application.Contracts.Module.Management;
+using Token.Management.Application.Contracts.Module.Management;
 using Token.Management.Domain.Base;
 using Token.Management.Domain.Shared;
 
@@ -41,12 +41,12 @@ public class UserInfoDto : SerialNumberEntity
     /// <summary>
     ///     账号状态
     /// </summary>
-    public StatueEnum Statue { get; set; }
+    public StatusEnum Status { get; set; }
 
     /// <summary>
-    ///     状态描述
+    /// 状态描述
     /// </summary>
-    public string? StatueName { get; set; }
+    public string? StatusName { get; set; }
 
     /// <summary>
     ///     性别
