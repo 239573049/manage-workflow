@@ -28,9 +28,9 @@ public static class EntityFrameworkCoreInitialData
                 HeadPortraits="https://upfile2.asqql.com/upfile/hdimg/wmtp/wmtp/2018-07/08/18_7_8_16_10_08yoqapqci.jpg",
                 MobileNumber=13049809673,
                 Name="管理员",
-                Password=des.DESEncrypt("Aa010426"),
+                Password=des.DESEncrypt("123456"),
                 CreationTime=now,
-                Statue =StatueEnum.Enable
+                Status =StatueEnum.Enable
             },
         };
 

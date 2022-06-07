@@ -26,12 +26,12 @@ public static class EntityFrameworkCoreConfig
             x.Property(x => x.Name).HasComment("用户昵称");
             x.Property(x => x.Password).HasComment("密码");
             x.Property(x => x.Sex).HasComment("性别");
-            x.Property(x => x.Statue).HasComment("状态");
+            x.Property(x => x.Status).HasComment("状态");
             x.Property(x => x.EMail).HasComment("邮箱");
             x.Property(x => x.HeadPortraits).HasComment("头像");
 
             x.Property(x => x.Password)
-                .HasConversion(x => des.DESDecrypt(x), x => des.DESEncrypt(x));
+                .HasConversion(x => des.DESEncrypt(x),x => des.DESDecrypt(x));
         });
 
         builder.Entity<Role>(x =>

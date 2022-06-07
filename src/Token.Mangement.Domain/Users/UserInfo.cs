@@ -58,7 +58,7 @@ public class UserInfo : Entity<Guid>, ISoftDelete, IHasCreationTime
     /// <summary>
     ///     账号状态
     /// </summary>
-    public StatueEnum Statue { get; set; }
+    public StatueEnum Status { get; set; }
 
     /// <summary>
     ///     手机号

@@ -35,10 +35,7 @@ public class LoginController : BaseController
     {
         var userInfo = await _userInfoService.GetUserInfo(input);
 
-        //生成令牌
-        var token = await _principalAccessor.CreateTokenAsync(userInfo);
-
-        return new OkObjectResult(new { token, userInfo });
+        return new OkObjectResult(new { token=userInfo.Item2, userInfo=userInfo.Item1 });
     }
 
     /// <summary>

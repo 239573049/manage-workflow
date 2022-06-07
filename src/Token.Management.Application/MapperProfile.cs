@@ -20,7 +20,7 @@ public class MapperProfile: Profile
             .ForMember(dest => dest.Role, l => l.MapFrom(a => a.UserRoleFunction.Select(a => a.Role)))
             .ForMember(dest => dest.SexName, l => l.MapFrom(a => a.Sex.GetEnumString()))
             .ForMember(dest => dest.Sex, l => l.MapFrom(a => (sbyte)a.Sex))
-            .ForMember(dest => dest.StatueName, l => l.MapFrom(a => a.Statue.GetEnumString()))
+            .ForMember(dest => dest.StatueName, l => l.MapFrom(a => a.Status.GetEnumString()))
             .ForMember(dest => dest.Department, l => l.MapFrom(a => a.UserDepartmentFunction.Select(a => a.Department)));
         CreateMap<UserInfoDto, UserInfo>()
             .ForMember(dest=>dest.Sex,l=>l.MapFrom(a=>(SexEnum)a.Sex));

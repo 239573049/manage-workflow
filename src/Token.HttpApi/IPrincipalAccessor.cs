@@ -8,7 +8,7 @@ public interface IPrincipalAccessor
     string Name { get; }
 
     Guid ID { get; }
-    string GetUser(string token);
+    UserInfo GetUser(string token);
 
     bool? IsAuthenticated();
 
@@ -26,6 +26,12 @@ public interface IPrincipalAccessor
     /// <returns></returns>
     T GetUserInfo<T>();
 
+    /// <summary>
+    /// 获取权限列表
+    /// </summary>
+    /// <returns></returns>
+    List<Guid> GetRoleIds();
+
     List<string> GetUserInfoFromToken(string claimType);
 
     /// <summary>
@@ -34,5 +40,5 @@ public interface IPrincipalAccessor
     /// <returns></returns>
     Guid UserId();
 
-    Task<string> CreateTokenAsync<T>(T userInfo);
+    Task<string> CreateTokenAsync(UserInfo userInfo);
 }

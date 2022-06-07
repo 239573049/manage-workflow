@@ -28,15 +28,15 @@ public class UserInfoController : BaseController
     /// <param name="code"></param>
     /// <param name="startTime"></param>
     /// <param name="endTime"></param>
-    /// <param name="statue"></param>
+    /// <param name="status"></param>
     /// <param name="pageNo"></param>
     /// <param name="pageSize"></param>
     /// <returns></returns>
     [HttpGet]
     public async Task<PagingModelView<List<UserInfoDto>>> GetUserInfoPaging(string? code, DateTime? startTime,
-        DateTime? endTime, sbyte statue = -1, int pageNo = 1, int pageSize = 20)
+        DateTime? endTime, sbyte status = -1, int pageNo = 1, int pageSize = 20)
     {
-        var data = await _userInfoService.GetUserInfoPaging(code, startTime, endTime, statue, pageNo, pageSize);
+        var data = await _userInfoService.GetUserInfoPaging(code, startTime, endTime, status, pageNo, pageSize);
         return new PagingModelView<List<UserInfoDto>>(SerialNumberHelper.GetList(data.Item1, pageNo, pageSize),
             data.Item2);
     }

@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Token.Management.Domain.Users;
 using Volo.Abp.Domain.Repositories;
 
 namespace Token.Management.Domain.Management.AccessFunction;
@@ -18,6 +19,18 @@ public interface IUserRoleFunctionRepository:IRepository<UserRoleFunction,Guid>
     /// <typeparam name="TKey"></typeparam>
     /// <returns></returns>
     Task<(List<UserRoleFunction>, int)> GetPageListAsync<TKey>(Expression<Func<UserRoleFunction,bool>> expression,
+        Expression<Func<UserRoleFunction,TKey>> sort,int skipCount,int maxResultCount);
+
+    /// <summary>
+    /// 分页获取排序
+    /// </summary>
+    /// <param name="expression"></param>
+    /// <param name="sort"></param>
+    /// <param name="skipCount"></param>
+    /// <param name="maxResultCount"></param>
+    /// <typeparam name="TKey"></typeparam>
+    /// <returns></returns>
+    Task<(List<UserInfo>, int)> GetPageUserListAsync<TKey>(Expression<Func<UserRoleFunction,bool>> expression,
         Expression<Func<UserRoleFunction,TKey>> sort,int skipCount,int maxResultCount);
 
     /// <summary>
