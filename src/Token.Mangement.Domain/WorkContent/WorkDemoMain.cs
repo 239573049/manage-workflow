@@ -1,5 +1,6 @@
 using Token.Management.Domain.Shared;
 using Volo.Abp;
+using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
 namespace Token.Management.Domain.WorkContent;
@@ -7,7 +8,7 @@ namespace Token.Management.Domain.WorkContent;
 /// <summary>
 /// 工作流Demo
 /// </summary>
-public class WorkDemoMain : Entity<Guid>, ISoftDelete
+public class WorkDemoMain : Entity<Guid>, ISoftDelete,IHasCreationTime
 {
     /// <summary>
     /// 工作流Dmeo名称
@@ -42,4 +43,6 @@ public class WorkDemoMain : Entity<Guid>, ISoftDelete
     public bool IsDeleted { get; set; }
 
     public virtual List<WorkContentDemo> WorkContentDemo { get; set; } = new List<WorkContentDemo>();
+
+    public DateTime CreationTime { get; }
 }

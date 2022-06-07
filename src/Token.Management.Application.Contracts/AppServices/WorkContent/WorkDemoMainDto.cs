@@ -48,4 +48,6 @@ public class WorkDemoMainDto
     public DateTime? EndTime { get; set; }
 
     public bool IsDeleted { get; set; }
+
+    public List<WorkContentDemoDto> WorkContentDemo { get; set; } = new List<WorkContentDemoDto>();
 }

@@ -10,5 +10,16 @@ public interface IWorkDemoMainService
     /// </summary>
     /// <param name="dto"></param>
     /// <returns></returns>
-    Task CreateWorkDemoMain(WorkDemoMainDto dto);
+    Task CreateWorkDemoMainAsync(WorkDemoMainDto dto);
+
+    /// <summary>
+    /// 获取Demo列表
+    /// </summary>
+    /// <param name="startTime"></param>
+    /// <param name="endTime"></param>
+    /// <param name="keyword"></param>
+    /// <param name="pageNo"></param>
+    /// <param name="pageSize"></param>
+    /// <returns></returns>
+    Task<(List<WorkDemoMainDto>, int)> GetWorkDemoListAsync(DateTime? startTime,DateTime? endTime,string keyword,int pageNo,int pageSize);
 }

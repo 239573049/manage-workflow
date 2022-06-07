@@ -58,8 +58,14 @@ public class MapperProfile : Profile
 
         #region WorkDemo
 
-        CreateMap<WorkDemoMainDto,WorkDemoMain>();
-        CreateMap<WorkDemoMain,WorkDemoMainDto>();
+        CreateMap<WorkDemoMainDto, WorkDemoMain>();
+        CreateMap<WorkDemoMain,WorkDemoMainDto>()
+            .ForMember(x=>x.WorkFlowNodeStatusName,
+                x=>x.MapFrom(x=>x.WorkFlowNodeStatus.GetEnumString()));
+        CreateMap<WorkContentDemoDto,WorkContentDemo>();
+        CreateMap<WorkContentDemo,WorkContentDemoDto>()
+            .ForMember(x=>x.WorkFlowNodeStatusName,
+                x=>x.MapFrom(x=>x.WorkFlowNodeStatus.GetEnumString()));
 
 
         #endregion
