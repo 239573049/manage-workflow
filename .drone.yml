@@ -10,7 +10,7 @@ steps:
   - name: managementapi
     when:
       branch:
-        - master
+        - token
     image: docker:dind
     environment:
       IMAGE: managementapi
@@ -25,7 +25,7 @@ steps:
     image: docker:dind
     when:
       branch:
-        - master
+        - token
     environment:
       IMAGE: managementapi
       ASPNETCORE_ENVIRONMENT: Development
