@@ -36,7 +36,7 @@ steps:
         path: /root/logs/managementapi/logs:/app/logs
     commands:
       - docker stop managementapi && docker rm managementapi
-      - docker run -d -network token --name managementapi managementapi:latest
+      - docker run -d --network token --name managementapi managementapi:latest
 
 volumes:
   - name: dockersock
