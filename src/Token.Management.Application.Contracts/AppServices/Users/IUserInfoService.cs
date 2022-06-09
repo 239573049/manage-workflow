@@ -1,4 +1,5 @@
-﻿using Token.Management.Application.Contracts.Module.Management;
+﻿using Token.Management.Application.Contracts.Module;
+using Token.Management.Application.Contracts.Module.Management;
 using Token.Management.Application.Contracts.Module.Users;
 
 namespace Token.Management.Application.Contracts.AppServices.Users;
@@ -13,14 +14,14 @@ public interface IUserInfoService
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    Task<UserInfoDto> GetUserInfo(LoginInput input);
+    Task<(UserInfoDto, string)> GetUserInfo(LoginInput input);
 
     /// <summary>
-    ///     用户分页数据
+    /// 用户分页数据
     /// </summary>
+    /// <param name="input"></param>
     /// <returns></returns>
-    Task<Tuple<List<UserInfoDto>, int>> GetUserInfoPaging(string? code, DateTime? startTime, DateTime? endTime,
-        sbyte statue = -1, int pageNo = 1, int pageSize = 20);
+    Task<Tuple<List<UserInfoDto>, int>> GetUserInfoPaging(UserInfoPagingInput input);
 
     /// <summary>
     ///     获取账号下所有部门

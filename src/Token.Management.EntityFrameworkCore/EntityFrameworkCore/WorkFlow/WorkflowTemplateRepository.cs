@@ -42,14 +42,13 @@ public class WorkflowTemplateRepository:EfCoreRepository<TokenDbContext,Workflow
         return await query.ToListAsync();
     }
 
-    public async Task<(List<WorkflowTemplate>, int)> GetPageListAsync<TKey>(Expression<Func<WorkflowTemplate, bool>> expression, Expression<Func<WorkflowTemplate, TKey>> sort, int skipCount, int maxResultCount)
+    public async Task<(List<WorkflowTemplate>, int)> GetPageListAsync(string keyword, int skipCount,int maxResultCount)
     {
         var dbContext = await GetDbContextAsync();
 
         var query =
             dbContext.WorkflowTemplate
-                .Where(expression)
-                .OrderBy(sort);
+                .WhereIf(!keyword.IsNullOrWhiteSpace(),x=>x.Code.Contains(keyword)||x.Name.Contains(keyword)||x.Remark.Contains(keyword));
 
         var count =await query.CountAsync();
 

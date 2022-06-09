@@ -2,6 +2,7 @@
 using Token.HttpApi;
 using Token.Infrastructure;
 using Token.Management.Application.Contracts.AppServices.Users;
+using Token.Management.Application.Contracts.Module;
 using Token.Management.Application.Contracts.Module.Users;
 using Token.ManagementApi.Host.Module;
 
@@ -23,21 +24,15 @@ public class UserInfoController : BaseController
     }
 
     /// <summary>
-    ///     获取用户账号分页
+    /// 获取用户账号分页
     /// </summary>
-    /// <param name="code"></param>
-    /// <param name="startTime"></param>
-    /// <param name="endTime"></param>
-    /// <param name="statue"></param>
-    /// <param name="pageNo"></param>
-    /// <param name="pageSize"></param>
+    /// <param name="input"></param>
     /// <returns></returns>
     [HttpGet]
-    public async Task<PagingModelView<List<UserInfoDto>>> GetUserInfoPaging(string? code, DateTime? startTime,
-        DateTime? endTime, sbyte statue = -1, int pageNo = 1, int pageSize = 20)
+    public async Task<PagingModelView<List<UserInfoDto>>> GetUserInfoPaging([FromQuery]UserInfoPagingInput input)
     {
-        var data = await _userInfoService.GetUserInfoPaging(code, startTime, endTime, statue, pageNo, pageSize);
-        return new PagingModelView<List<UserInfoDto>>(SerialNumberHelper.GetList(data.Item1, pageNo, pageSize),
+        var data = await _userInfoService.GetUserInfoPaging(input);
+        return new PagingModelView<List<UserInfoDto>>(SerialNumberHelper.GetList(data.Item1,input.PageNo,input.PageSize),
             data.Item2);
     }
 

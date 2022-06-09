@@ -12,6 +12,7 @@ public class MenuController : BaseController
 {
     private readonly IRoleService _roleService;
 
+    /// <inheritdoc />
     public MenuController(
         IRoleService roleService
     )

@@ -45,12 +45,13 @@ public class WorkflowNodeTemplateRepository:EfCoreRepository<TokenDbContext,Work
     {
         var dbContext = await GetDbContextAsync();
 
-        return await dbContext.WorkflowNodeTemplate
+        var query=  dbContext.WorkflowNodeTemplate
             .Where(expression)
             .SelectMany(x => x.WorkflowApprovalRole)
-            .Select(x => x.RoleId)
-            .ToListAsync();
-    }
+            .Select(x => x.RoleId);
+
+        return await query.ToListAsync();
+     }
 
     public async Task<WorkflowNodeTemplate> GetAsync(Expression<Func<WorkflowNodeTemplate,bool>> expression)
     {

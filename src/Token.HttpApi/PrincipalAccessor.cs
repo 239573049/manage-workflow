@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Token.HttpApi.Module;
 using Token.Management.Domain;
+using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.Users;
 using Volo.Abp.DependencyInjection;
 
@@ -42,12 +43,23 @@ public class PrincipalAccessor : IPrincipalAccessor, ITransientDependency
 
     public IEnumerable<Claim> GetClaimsIdentity()
     {
-        return _contextAccessor.HttpContext.User.Claims;
+        var token = GetToken();
+        JwtSecurityTokenHandler securityTokenHandler = new();
+        return securityTokenHandler.ReadJwtToken(token).Claims;
     }
 
     public List<string> GetClaimValueByType(string claimType)
     {
         return GetClaimsIdentity().Where(item => item.Type == claimType).Select(item => item.Value).ToList();
+    }
+
+    public List<Guid> GetRoleIds()
+    {
+        var roleIds = GetClaimValueByType(Constants.Role).FirstOrDefault();
+        if (roleIds.IsNullOrEmpty())
+            throw new BusinessException(401, "账号未授权");
+
+        return JsonConvert.DeserializeObject<List<Guid>>(roleIds);
     }
 
     public List<string> GetUserInfoFromToken(string claimType)
@@ -60,12 +72,14 @@ public class PrincipalAccessor : IPrincipalAccessor, ITransientDependency
             : new List<string>();
     }
 
-    public string GetUser(string token)
+    public UserInfo GetUser(string token)
     {
         JwtSecurityTokenHandler securityTokenHandler = new();
-        return securityTokenHandler.ReadJwtToken(token).Claims.Where(item => item.Type == Constants.User)
-            .Select(item => item.Value).FirstOrDefault() ?? "";
+        var userInfoStr= securityTokenHandler.ReadJwtToken(token).Claims.Where(item => item.Type == Constants.User)
+            .Select(item => item.Value).FirstOrDefault();
+        return JsonConvert.DeserializeObject<UserInfo>(userInfoStr);
     }
+
 
     public string GetTenantId()
     {
@@ -93,16 +107,20 @@ public class PrincipalAccessor : IPrincipalAccessor, ITransientDependency
         return JsonConvert.DeserializeObject<T>(result);
     }
 
-    public Task<string> CreateTokenAsync<T>(T userInfo)
+    public Task<string> CreateTokenAsync(UserInfo userInfo)
     {
-        var user = userInfo as UserInfo;
 
         // 添加一些需要的键值对
-        Claim[] claims = { new Claim(Constants.User, JsonConvert.SerializeObject(userInfo)) };
-        if (user != null)
+        List<Claim> claims = new List<Claim>()
         {
-            claims.AddFirst(new Claim(Constants.Role,JsonConvert.SerializeObject(user.UserRoleFunction.Select(x=>x.RoleId))));
-        }
+            new Claim(Constants.Department,JsonConvert.SerializeObject(userInfo?.UserDepartmentFunction.Select(x=>x.DepartmentId))),
+            new Claim(Constants.Role,JsonConvert.SerializeObject(userInfo?.UserRoleFunction.Select(x=>x.RoleId)))
+        };
+
+        userInfo.UserRoleFunction.Clear();;
+        userInfo.UserDepartmentFunction.Clear();
+
+        claims.AddFirst(new Claim(Constants.User, JsonConvert.SerializeObject(userInfo)));
 
         byte[] keyBytes = Encoding.UTF8.GetBytes(_tokenOptions.SecretKey!);
         SigningCredentials cred = new(new SymmetricSecurityKey(keyBytes),

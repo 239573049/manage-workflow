@@ -1,4 +1,4 @@
-﻿using Volo.Abp;
+using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
@@ -7,7 +7,7 @@ namespace Token.Management.Domain.WorkFlow;
 /// <summary>
 ///     流程模板
 /// </summary>
-public class WorkflowTemplate : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class WorkflowTemplate : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <summary>
     ///     流程名称
@@ -24,11 +24,12 @@ public class WorkflowTemplate : AggregateRoot<Guid>, ISoftDelete,IHasCreationTim
     /// </summary>
     public string? Remark { get; set; }
 
-    public List<WorkflowInstance> WorkflowInstance { get; set; } = new();
-
-    public List<WorkflowNodeTemplate> WorkflowNodeTemplate { get; set; } = new();
 
     public bool IsDeleted { get; set; }
 
     public DateTime CreationTime { get; }
+
+    public List<WorkflowInstance> WorkflowInstance { get; set; } = new();
+
+    public List<WorkflowNodeTemplate> WorkflowNodeTemplate { get; set; } = new();
 }

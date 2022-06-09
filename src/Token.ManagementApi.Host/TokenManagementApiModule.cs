@@ -1,4 +1,4 @@
-using Token.HttpApi;
+﻿using Token.HttpApi;
 using Token.Management.Application;
 using Token.Management.EntityFrameworkCore.EntityFrameworkCore;
 using Volo.Abp;
@@ -12,13 +12,12 @@ namespace Token.ManagementApi.Host;
 /// Api模块
 /// </summary>
 [DependsOn(
-    typeof(AbpAutofacModule),
     typeof(TokenHttpApiModule),
-    typeof(TokenManagementEntityFrameworkCoreModule),
+    typeof(AbpAutofacModule),
     typeof(TokenManagementApplicationModule),
     typeof(AbpAspNetCoreModule)
 )]
-public class TokenManagementApiModule : AbpModule
+public  class TokenManagementApiModule : AbpModule
 {
     /// <summary>
     /// Use

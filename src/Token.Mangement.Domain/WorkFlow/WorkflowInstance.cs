@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Shared;
+using Token.Management.Domain.Shared;
 using Token.Management.Domain.Users;
 using Volo.Abp;
 using Volo.Abp.Auditing;
@@ -9,7 +9,7 @@ namespace Token.Management.Domain.WorkFlow;
 /// <summary>
 /// 工作流实例
 /// </summary>
-public class WorkflowInstance : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class WorkflowInstance : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <summary>
     ///     流程发起人
@@ -81,17 +81,17 @@ public class WorkflowInstance : AggregateRoot<Guid>, ISoftDelete,IHasCreationTim
     /// </summary>
     public UserInfo? Sponsor { get; set; }
 
-    public WorkflowTemplate? WorkflowTemplate { get; set; }
+    public virtual WorkflowTemplate? WorkflowTemplate { get; set; }
 
     /// <summary>
     ///     已审核人员信息
     /// </summary>
-    public List<WorkflowApprovers> WorkflowApprovers { get; set; } = new();
+    public virtual List<WorkflowApprovers> WorkflowApprovers { get; set; } = new();
 
     /// <summary>
     ///     当前实际的流程节点
     /// </summary>
-    public List<WorkflowNodeInstance> WorkflowNodeInstances { get; set; } = new();
+    public virtual List<WorkflowNodeInstance> WorkflowNodeInstances { get; set; } = new();
 
     public bool IsDeleted { get; set; }
 

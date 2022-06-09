@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Users;
+using Token.Management.Domain.Users;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
@@ -8,7 +8,7 @@ namespace Token.Management.Domain.Management.AccessFunction;
 /// <summary>
 ///     用户部门配置
 /// </summary>
-public class UserDepartmentFunction : AggregateRoot<Guid>, ISoftDelete, IHasCreationTime
+public class UserDepartmentFunction : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public UserDepartmentFunction()

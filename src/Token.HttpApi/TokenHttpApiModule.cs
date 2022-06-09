@@ -165,5 +165,6 @@ public class TokenHttpApiModule : AbpModule
 
         app.UseAuthentication();
         app.UseAuthorization();
+
     }
 }

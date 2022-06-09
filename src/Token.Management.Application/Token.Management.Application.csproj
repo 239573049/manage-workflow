@@ -7,15 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AutoMapper" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Core" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Ddd.Application" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="5.3.0-rc.3" />
+    <PackageReference Include="Volo.Abp.Core" Version="5.3.0-rc.3" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="5.3.0-rc.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Token.HttpApi\Token.HttpApi.csproj" />
     <ProjectReference Include="..\Token.Infrastructure\Token.Infrastructure.csproj" />
     <ProjectReference Include="..\Token.Management.Application.Contracts\Token.Management.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Token.Management.EntityFrameworkCore\Token.Management.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.SystemService;
@@ -57,16 +57,16 @@ public class TokenDbContext : AbpDbContext<TokenDbContext>
         optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution);
 
 #if DEBUG
+#endif
         // 显示更详细的异常日志
         optionsBuilder.EnableDetailedErrors();
-#endif
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Initia();
-        
+
         builder.Config();
+        builder.Initia();
 
 
     }

@@ -25,11 +25,9 @@ public interface IWorkflowTemplateRepository:IRepository<WorkflowTemplate,Guid>
     /// <summary>
     ///
     /// </summary>
-    /// <param name="expression"></param>
-    /// <param name="select"></param>
+    /// <param name="keyword"></param>
     /// <param name="skipCount"></param>
     /// <param name="maxResultCount"></param>
-    /// <typeparam name="TKey"></typeparam>
     /// <returns></returns>
-    Task<(List<WorkflowTemplate>,int)> GetPageListAsync<TKey>(Expression<Func<WorkflowTemplate,bool>> expression,Expression<Func<WorkflowTemplate,TKey>> select,int skipCount,int maxResultCount);
+    Task<(List<WorkflowTemplate>, int)> GetPageListAsync(string keyword, int skipCount,int maxResultCount);
 }

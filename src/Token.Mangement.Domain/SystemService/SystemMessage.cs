@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Shared;
+using Token.Management.Domain.Shared;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
@@ -7,7 +7,7 @@ namespace Token.Management.Domain.SystemService;
 /// <summary>
 ///     系统信息
 /// </summary>
-public class SystemMessage:AggregateRoot<Guid>,IHasCreationTime
+public class SystemMessage : Entity<Guid>, IHasCreationTime
 {
     /// <summary>
     ///     标题

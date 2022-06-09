@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Shared;
+using Token.Management.Domain.Shared;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
@@ -8,7 +8,7 @@ namespace Token.Management.Domain.WorkFlow;
 /// <summary>
 ///     工作流实例节点
 /// </summary>
-public class WorkflowNodeInstance : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class WorkflowNodeInstance : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <summary>
     ///     关联流程

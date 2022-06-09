@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Token.Infrastructure.Extension;
 using Token.Management.Domain.Management;
 using Token.Management.Domain.Management.AccessFunction;
 using Token.Management.Domain.SystemService;
@@ -11,12 +12,10 @@ namespace Token.Management.EntityFrameworkCore.EntityFrameworkCore;
 
 public static class EntityFrameworkCoreConfig
 {
-    public static ModelBuilder Config(this ModelBuilder  builder)
+    public static ModelBuilder Config(this ModelBuilder builder)
     {
-        builder.Entity<ExtraPropertyDictionary>(x =>
-        {
-            x.HasKey(x => x.Count);
-        });
+        var des = new DESHelper();
+        builder.Entity<ExtraPropertyDictionary>().HasKey(x=>x.Count);
 
         builder.Entity<UserInfo>(x =>
         {
@@ -27,10 +26,12 @@ public static class EntityFrameworkCoreConfig
             x.Property(x => x.Name).HasComment("用户昵称");
             x.Property(x => x.Password).HasComment("密码");
             x.Property(x => x.Sex).HasComment("性别");
-            x.Property(x => x.Statue).HasComment("状态");
+            x.Property(x => x.Status).HasComment("状态");
             x.Property(x => x.EMail).HasComment("邮箱");
             x.Property(x => x.HeadPortraits).HasComment("头像");
 
+            x.Property(x => x.Password)
+                .HasConversion(x => des.DESEncrypt(x),x => des.DESDecrypt(x));
         });
 
         builder.Entity<Role>(x =>
@@ -152,6 +153,21 @@ public static class EntityFrameworkCoreConfig
 
         });
 
+        builder.Entity<Company>(x =>
+        {
+            x.ToTable("token_company");
+            x.HasIndex(x => x.Id);
+            x.HasKey(x => x.Id);
+        });
+
+        builder.Entity<WorkContentDemo>(x =>
+        {
+            x.ToTable("token_work_content_demo");
+
+            x.HasIndex(x => x.Id);
+            x.HasKey(x => x.Id);
+
+        });
         return builder;
     }
 }

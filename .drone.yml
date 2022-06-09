@@ -1,0 +1,44 @@
+﻿kind: pipeline
+name: managementapi
+type: docker
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: managementapi
+    when:
+      branch:
+        - master
+    image: docker:dind
+    environment:
+      IMAGE: managementapi
+      ASPNETCORE_ENVIRONMENT: Development
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - docker build -f ./src/Token.ManagementApi.Host/Dockerfile -t managementapi .
+
+  - name: managementapi-push
+    image: docker:dind
+    when:
+      branch:
+        - master
+    environment:
+      IMAGE: managementapi
+      ASPNETCORE_ENVIRONMENT: Development
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: logs
+        path: /root/logs/managementapi/logs:/app/logs
+    commands:
+      - docker stop managementapi && docker rm managementapi
+      - docker run -d -network token --name managementapi adminapi:latest
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock

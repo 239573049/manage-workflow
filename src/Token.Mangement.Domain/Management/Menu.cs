@@ -1,4 +1,4 @@
-﻿using Volo.Abp;
+using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
@@ -7,7 +7,7 @@ namespace Token.Management.Domain.Management;
 /// <summary>
 /// 菜单
 /// </summary>
-public class Menu : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class Menu : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public Menu()

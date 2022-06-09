@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Management.AccessFunction;
+using Token.Management.Domain.Management.AccessFunction;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
@@ -8,7 +8,7 @@ namespace Token.Management.Domain.Management;
 /// <summary>
 /// 部门
 /// </summary>
-public class Department : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class Department : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public Department()

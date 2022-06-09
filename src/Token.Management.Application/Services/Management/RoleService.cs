@@ -16,7 +16,6 @@ namespace Token.Management.Application.Services.Management;
 
 public class RoleService : ApplicationService, IRoleService
 {
-    private readonly IMapper _mapper;
     private readonly IPrincipalAccessor _principalAccessor;
     private readonly IRepository<Role> _roleRepository;
     private readonly IRepository<Menu> _menuRepository;
@@ -24,7 +23,6 @@ public class RoleService : ApplicationService, IRoleService
     private readonly IUserRoleFunctionRepository _userRoleFunctionRepository;
     private readonly IRepository<MenuRoleFunction> _menuRoleFunctionRepository;
     public RoleService(
-        IMapper mapper,
         IPrincipalAccessor principalAccessor,
         IUserInfoRepository userInfoRepository,
         IRepository<Menu> menuRepository,
@@ -32,7 +30,6 @@ public class RoleService : ApplicationService, IRoleService
         IRepository<MenuRoleFunction> menuRoleFunctionRepository,
         IRepository<Role> roleRepository)
     {
-        _mapper = mapper;
         _menuRepository = menuRepository;
         _principalAccessor = principalAccessor;
         _userInfoRepository = userInfoRepository;
@@ -42,7 +39,7 @@ public class RoleService : ApplicationService, IRoleService
     }
     public async Task<RoleDto> CreateRole(RoleDto role)
     {
-        var data = _mapper.Map<Role>(role);
+        var data = ObjectMapper.Map<RoleDto,Role>(role);
         if (data.Code.IsNull() || data.Name.IsNull()) throw new BusinessException("角色编号或名称不能为空");
         if (await _roleRepository.AnyAsync(a => a.Code == data.Code || a.Name == data.Name))
             throw new BusinessException("已经存在相同编号或名称的角色");
@@ -52,7 +49,7 @@ public class RoleService : ApplicationService, IRoleService
 
         await CurrentUnitOfWork.SaveChangesAsync();
 
-        return _mapper.Map<RoleDto>(data);
+        return ObjectMapper.Map<Role,RoleDto>(data);
 
     }
 
@@ -128,14 +125,16 @@ public class RoleService : ApplicationService, IRoleService
                 .GetListAsync(a => (string.IsNullOrEmpty(name) || a.Name!.ToLower().Contains(name.ToLower()))))
                 .OrderBy(x=>x.Index);
 
-        return _mapper.Map<List<RoleDto>>(data);
+        return ObjectMapper.Map<IOrderedEnumerable<Role>,List<RoleDto>>(data);
     }
 
     public async Task<(List<UserInfoDto>, int)> GetRoleUserInfo(Guid id, PageInput input)
     {
         var data=await  _userRoleFunctionRepository
-            .GetPageListAsync(x => id==x.RoleId,a => a.CreationTime,  input.SkipCount,input.MaxResultCount);
-        return (_mapper.Map<List<UserInfoDto>>(data.Item1),data.Item2);
+            .GetPageUserListAsync(x => id==x.RoleId,a => a.CreationTime,
+                input.SkipCount,input.MaxResultCount);
+
+        return (ObjectMapper.Map<List<UserInfo>,List<UserInfoDto>>(data.Item1),data.Item2);
     }
 
     public async Task<(List<UserInfoDto>, int)> GetRoleUserInfoNotExit(Guid id,PageInput input)
@@ -147,13 +146,12 @@ public class RoleService : ApplicationService, IRoleService
                                &&!a.UserRoleFunction.Any(a => a.RoleId == id),
                 x=>x.CreationTime,input.SkipCount,input.MaxResultCount);
 
-        return (_mapper.Map<List<UserInfoDto>>(data.Item1),data.Item2);
+        return (ObjectMapper.Map<List<UserInfo>,List<UserInfoDto>>(data.Item1),data.Item2);
     }
 
     public async Task<List<MenuTreeDto>> GetUserMenuList()
     {
-        var user = _principalAccessor.GetUserInfo<UserInfo>();
-        var roleIds = user.UserRoleFunction!.Select(x=>x.RoleId).ToList();
+        var roleIds = _principalAccessor.GetRoleIds();
 
         var menuRole =(await _menuRoleFunctionRepository.GetListAsync(a => roleIds.Contains(a.RoleId)))
             .Select(x=>x.MenuId)
@@ -196,7 +194,7 @@ public class RoleService : ApplicationService, IRoleService
 
         var data = await _roleRepository.FirstOrDefaultAsync(a => a.Id == role.Id);
         if (data == null) throw new BusinessException("数据不存在或者已经被删除");
-        _mapper.Map(role, data);
+        ObjectMapper.Map(role, data);
         await _roleRepository.UpdateAsync(data);
 
         return role;
@@ -204,7 +202,7 @@ public class RoleService : ApplicationService, IRoleService
 
     public async Task<bool> UpdateRoleIndex(List<RoleDto> roles)
     {
-        var data = _mapper.Map<List<Role>>(roles);
+        var data = ObjectMapper.Map<List<RoleDto>,List<Role>>(roles);
         for (int i = 0; i < data.Count; i++)
         {
             data[i].Index = i;

@@ -1,4 +1,4 @@
-﻿using Volo.Abp;
+using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
@@ -7,7 +7,7 @@ namespace Token.Management.Domain.Management;
 /// <summary>
 ///     公司
 /// </summary>
-public class Company : AggregateRoot<Guid>, ISoftDelete,IHasCreationTime
+public class Company : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public Company()

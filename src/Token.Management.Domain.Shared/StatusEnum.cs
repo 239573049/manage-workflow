@@ -5,7 +5,7 @@ namespace Token.Management.Domain.Shared;
 /// <summary>
 ///     用户状态
 /// </summary>
-public enum StatueEnum
+public enum StatusEnum
 {
     /// <summary>
     ///     启用

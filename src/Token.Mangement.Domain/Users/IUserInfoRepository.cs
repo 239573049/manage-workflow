@@ -8,6 +8,8 @@ namespace Token.Management.Domain.Users;
 /// </summary>
 public interface IUserInfoRepository:IRepository<UserInfo,Guid>
 {
+    Task<(List<UserInfo>, int)> GetListAsync(DateTime? startTime,DateTime? endTime,string? keyword,sbyte? status,int skipCount,int maxResultCount);
+
     /// <summary>
     ///
     /// </summary>

@@ -1,4 +1,4 @@
-﻿using Token.Management.Domain.Users;
+using Token.Management.Domain.Users;
 using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
@@ -8,7 +8,7 @@ namespace Token.Management.Domain.Management.AccessFunction;
 /// <summary>
 ///     用户角色配置
 /// </summary>
-public class UserRoleFunction : AggregateRoot<Guid>, ISoftDelete, IHasCreationTime
+public class UserRoleFunction : Entity<Guid>, ISoftDelete, IHasCreationTime
 {
     /// <inheritdoc />
     public UserRoleFunction(Guid id) : base(id)
