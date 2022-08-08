@@ -20,23 +20,9 @@ steps:
         path: /var/run/docker.sock
     commands:
       - docker build -f ./src/Token.ManagementApi.Host/Dockerfile -t managementapi .
-
-  - name: managementapi-push
-    image: docker:dind
-    when:
-      branch:
-        - token
-    environment:
-      IMAGE: managementapi
-      ASPNETCORE_ENVIRONMENT: Development
-    volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
-      - name: logs
-        path: /root/logs/managementapi/logs:/app/logs
-    commands:
       - docker stop managementapi && docker rm managementapi
-      - docker run -d --network token --name managementapi managementapi:latest
+      - docker run -d --network token -v /etc/localtime:/etc/localtime --name managementapi managementapi:latest
+
 
 volumes:
   - name: dockersock
