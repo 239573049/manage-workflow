@@ -1,5 +1,5 @@
 ﻿kind: pipeline
-name: managementapi
+name: authorization
 type: docker
 
 platform:
@@ -7,22 +7,15 @@ platform:
   arch: amd64
 
 steps:
-  - name: managementapi
-    when:
-      branch:
-        - token
-    image: docker:dind
-    environment:
-      IMAGE: managementapi
-      ASPNETCORE_ENVIRONMENT: Development
+  - name: managementapi:dev
+    image: linuxserver/docker-compose
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker build -f ./src/Token.ManagementApi.Host/Dockerfile -t managementapi .
-      - docker stop managementapi && docker rm managementapi
-      - docker run -d --network token -v /etc/localtime:/etc/localtime --name managementapi managementapi:latest
-
+      - docker build -f ./src/Token.ManagementApi.Host/Dockerfile -t registry.cn-shenzhen.aliyuncs.com/tokengo/managementapi:dev .
+      - docker-compose down && docker-compose up -d
+      
 volumes:
   - name: dockersock
     host:
