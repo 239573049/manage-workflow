@@ -10,7 +10,7 @@ steps:
   - name: managementapi
     when:
       branch:
-        - master
+        - token
     image: docker:dind
     environment:
       IMAGE: managementapi
@@ -25,7 +25,7 @@ steps:
     image: docker:dind
     when:
       branch:
-        - master
+        - token
     environment:
       IMAGE: managementapi
       ASPNETCORE_ENVIRONMENT: Development
@@ -36,7 +36,7 @@ steps:
         path: /root/logs/managementapi/logs:/app/logs
     commands:
       - docker stop managementapi && docker rm managementapi
-      - docker run -d -network token --name managementapi adminapi:latest
+      - docker run -d --network token --name managementapi managementapi:latest
 
 volumes:
   - name: dockersock
