@@ -23,7 +23,6 @@ steps:
       - docker stop managementapi && docker rm managementapi
       - docker run -d --network token -v /etc/localtime:/etc/localtime --name managementapi managementapi:latest
 
-
 volumes:
   - name: dockersock
     host:
